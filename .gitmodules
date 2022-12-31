@@ -1,0 +1,3 @@
+[submodule "ESP32 Code/ESP32 Code/CControl"]
+	path = ESP32 Code/ESP32 Code/CControl
+	url = https://github.com/DanielMartensson/CControl
