@@ -1,0 +1,1 @@
+The results of this controller are purely for simulation purposes. The computed gains are simply unattainable and this is due to having faulty EOMs incorperating the base excitation aspect.
