@@ -1,1 +1,0 @@
-The ESP32 and the ATmega are supposed to interact. The ESP is the master, while the ATmega is the slave device.
