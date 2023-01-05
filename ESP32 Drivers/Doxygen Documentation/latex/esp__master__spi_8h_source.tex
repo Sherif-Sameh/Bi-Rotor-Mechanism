@@ -1,0 +1,19 @@
+\hypertarget{esp__master__spi_8h_source}{}\doxysection{esp\+\_\+master\+\_\+spi.\+h}
+\mbox{\hyperlink{esp__master__spi_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef SPI\_Z}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define SPI\_Z}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}SPI.h"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{29 SPIClass *\mbox{\hyperlink{esp__master__spi_8h_a8a702b5acb140f89c75096dcfdd0d30c}{initialize\_spi}}(uint8\_t spi\_num);}
+\DoxyCodeLine{43 SPISettings \mbox{\hyperlink{esp__master__spi_8h_afab3158fbdf25232129482cc923063e1}{set\_spi\_settings}}(uint32\_t clkf, uint8\_t spi\_mode, \textcolor{keywordtype}{char} first\_bit);}
+\DoxyCodeLine{57 \textcolor{keywordtype}{void} \mbox{\hyperlink{esp__master__spi_8h_ade54bfd9b976272117c38e9fce788ac3}{spi\_send}}(SPIClass *spi,uint8\_t data, uint32\_t clkf, uint8\_t spi\_mode, \textcolor{keywordtype}{char} first\_bit);}
+\DoxyCodeLine{67 \textcolor{keywordtype}{void} \mbox{\hyperlink{esp__master__spi_8h_ade54bfd9b976272117c38e9fce788ac3}{spi\_send}}(SPIClass *spi,uint8\_t data, SPISettings mysettings);}
+\DoxyCodeLine{81 uint8\_t \mbox{\hyperlink{esp__master__spi_8h_a3c3607d99fdcb612780a8ad5e7649538}{spi\_receive}}(SPIClass *spi, uint32\_t clkf, uint8\_t spi\_mode, \textcolor{keywordtype}{char} first\_bit);}
+\DoxyCodeLine{91 uint8\_t \mbox{\hyperlink{esp__master__spi_8h_a3c3607d99fdcb612780a8ad5e7649538}{spi\_receive}}(SPIClass *spi, SPISettings mysettings);}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{93 }
+
+\end{DoxyCode}

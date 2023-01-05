@@ -1,0 +1,117 @@
+\hypertarget{_e_s_c___b_l_heli_8h}{}\doxysection{ESC\+\_\+\+BLHeli.\+h File Reference}
+\label{_e_s_c___b_l_heli_8h}\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+
+
+A driver for controlling the BLHeli brushless motor ESC.  
+
+
+{\ttfamily \#include \char`\"{}MCAL\+\_\+\+TIMER0.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_e_s_c___b_l_heli_8h_aac8baeff60d9d89ab6b8339e3eb5e573}{ESC\+\_\+\+BLHELI\+\_\+\+PWM\+\_\+\+FREQ\+\_\+\+HZ}}~250
+\item 
+\#define \mbox{\hyperlink{_e_s_c___b_l_heli_8h_a600524dc41303728ceade7e10ec1ba23}{ESC\+\_\+\+BLHELI\+\_\+\+MAX\+\_\+\+PULSE\+\_\+\+WIDTH\+\_\+\+MS}}~((float) 2)
+\item 
+\#define \mbox{\hyperlink{_e_s_c___b_l_heli_8h_a796e0da324557ec9afafd905dd1165d2}{ESC\+\_\+\+BLHELI\+\_\+\+MIN\+\_\+\+PULSE\+\_\+\+WIDTH\+\_\+\+MS}}~((float) 1)
+\item 
+\#define \mbox{\hyperlink{_e_s_c___b_l_heli_8h_ac4a4060a910142b1af4863788f7166dc}{ESC\+\_\+\+BLHELI\+\_\+\+MAX\+\_\+\+VOLTAGE}}~((float) 12)
+\item 
+\#define \mbox{\hyperlink{_e_s_c___b_l_heli_8h_a18904b3aee88cb46e8866518141e2e7c}{ESC\+\_\+\+BLHELI\+\_\+\+WORKING\+\_\+\+MODE}}~\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r0_8h_a43b4b7d0920f27bbf728bee44f99f898a4eed843e41a19f3668ab813a11e677c2}{TIMER0\+\_\+\+PWM\+\_\+\+NON\+\_\+\+INVERTED}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_e_s_c___b_l_heli_8h_a4b64d6b710bf1c83c70e813c76cd06d9}{init\+ESC\+\_\+\+BLHeli}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the underlying timer according to the desired settings as well as calculating all the neccessary parameters for the ESCs normal operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_s_c___b_l_heli_8h_a45ce79930d640d40dfff3090ffc1ddcd}{set\+Duty\+Cycle\+BLHeli}} (float voltage)
+\begin{DoxyCompactList}\small\item\em Sets the Duty Cycle for the ESC by converting the voltage into a duty cycle then communicating with the timer to set that duty cycle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A driver for controlling the BLHeli brushless motor ESC. 
+
+\begin{DoxyAuthor}{Author}
+Sherif Sameh 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+In its current configuration, this driver is bound to Timer 0 of the ATmega 
+\end{DoxyAttention}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/01-\/02
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_e_s_c___b_l_heli_8h_aac8baeff60d9d89ab6b8339e3eb5e573}\label{_e_s_c___b_l_heli_8h_aac8baeff60d9d89ab6b8339e3eb5e573}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!ESC\_BLHELI\_PWM\_FREQ\_HZ@{ESC\_BLHELI\_PWM\_FREQ\_HZ}}
+\index{ESC\_BLHELI\_PWM\_FREQ\_HZ@{ESC\_BLHELI\_PWM\_FREQ\_HZ}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_BLHELI\_PWM\_FREQ\_HZ}{ESC\_BLHELI\_PWM\_FREQ\_HZ}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+BLHELI\+\_\+\+PWM\+\_\+\+FREQ\+\_\+\+HZ~250}
+
+This macro is used to set the frequency of the PWM signal in Hz. Note\+: This value is fixed and cannot be changed during runtime because the ESCs have to be recalibrated in order to work with a different frequency so it would not have made sense to make it a variable. \mbox{\Hypertarget{_e_s_c___b_l_heli_8h_a600524dc41303728ceade7e10ec1ba23}\label{_e_s_c___b_l_heli_8h_a600524dc41303728ceade7e10ec1ba23}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!ESC\_BLHELI\_MAX\_PULSE\_WIDTH\_MS@{ESC\_BLHELI\_MAX\_PULSE\_WIDTH\_MS}}
+\index{ESC\_BLHELI\_MAX\_PULSE\_WIDTH\_MS@{ESC\_BLHELI\_MAX\_PULSE\_WIDTH\_MS}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_BLHELI\_MAX\_PULSE\_WIDTH\_MS}{ESC\_BLHELI\_MAX\_PULSE\_WIDTH\_MS}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+BLHELI\+\_\+\+MAX\+\_\+\+PULSE\+\_\+\+WIDTH\+\_\+\+MS~((float) 2)}
+
+This macros sets the maximum pulse width in ms that corresponds to 100\% duty cycle as specefied by the manufacturer of the ESC. \mbox{\Hypertarget{_e_s_c___b_l_heli_8h_a796e0da324557ec9afafd905dd1165d2}\label{_e_s_c___b_l_heli_8h_a796e0da324557ec9afafd905dd1165d2}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!ESC\_BLHELI\_MIN\_PULSE\_WIDTH\_MS@{ESC\_BLHELI\_MIN\_PULSE\_WIDTH\_MS}}
+\index{ESC\_BLHELI\_MIN\_PULSE\_WIDTH\_MS@{ESC\_BLHELI\_MIN\_PULSE\_WIDTH\_MS}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_BLHELI\_MIN\_PULSE\_WIDTH\_MS}{ESC\_BLHELI\_MIN\_PULSE\_WIDTH\_MS}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+BLHELI\+\_\+\+MIN\+\_\+\+PULSE\+\_\+\+WIDTH\+\_\+\+MS~((float) 1)}
+
+This macros sets the minimum pulse width in ms that corresponds to 0\% duty cycle as specefied by the manufacturer of the ESC. \mbox{\Hypertarget{_e_s_c___b_l_heli_8h_ac4a4060a910142b1af4863788f7166dc}\label{_e_s_c___b_l_heli_8h_ac4a4060a910142b1af4863788f7166dc}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!ESC\_BLHELI\_MAX\_VOLTAGE@{ESC\_BLHELI\_MAX\_VOLTAGE}}
+\index{ESC\_BLHELI\_MAX\_VOLTAGE@{ESC\_BLHELI\_MAX\_VOLTAGE}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_BLHELI\_MAX\_VOLTAGE}{ESC\_BLHELI\_MAX\_VOLTAGE}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+BLHELI\+\_\+\+MAX\+\_\+\+VOLTAGE~((float) 12)}
+
+This macro sets the maximum voltage that is available to the motors and is used in order to calculate the required pulse width depending on the desired voltage level. \mbox{\Hypertarget{_e_s_c___b_l_heli_8h_a18904b3aee88cb46e8866518141e2e7c}\label{_e_s_c___b_l_heli_8h_a18904b3aee88cb46e8866518141e2e7c}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!ESC\_BLHELI\_WORKING\_MODE@{ESC\_BLHELI\_WORKING\_MODE}}
+\index{ESC\_BLHELI\_WORKING\_MODE@{ESC\_BLHELI\_WORKING\_MODE}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_BLHELI\_WORKING\_MODE}{ESC\_BLHELI\_WORKING\_MODE}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+BLHELI\+\_\+\+WORKING\+\_\+\+MODE~\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r0_8h_a43b4b7d0920f27bbf728bee44f99f898a4eed843e41a19f3668ab813a11e677c2}{TIMER0\+\_\+\+PWM\+\_\+\+NON\+\_\+\+INVERTED}}}
+
+This macro is used to choose between inverted and non-\/inverted COMs for the underlying timer. \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r0_8h_a43b4b7d0920f27bbf728bee44f99f898}{TIMER0\+\_\+\+PWM\+\_\+\+COM}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_e_s_c___b_l_heli_8h_a4b64d6b710bf1c83c70e813c76cd06d9}\label{_e_s_c___b_l_heli_8h_a4b64d6b710bf1c83c70e813c76cd06d9}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!initESC\_BLHeli@{initESC\_BLHeli}}
+\index{initESC\_BLHeli@{initESC\_BLHeli}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{initESC\_BLHeli()}{initESC\_BLHeli()}}
+{\footnotesize\ttfamily void init\+ESC\+\_\+\+BLHeli (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the underlying timer according to the desired settings as well as calculating all the neccessary parameters for the ESCs normal operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_e_s_c___b_l_heli_8h_a45ce79930d640d40dfff3090ffc1ddcd}\label{_e_s_c___b_l_heli_8h_a45ce79930d640d40dfff3090ffc1ddcd}} 
+\index{ESC\_BLHeli.h@{ESC\_BLHeli.h}!setDutyCycleBLHeli@{setDutyCycleBLHeli}}
+\index{setDutyCycleBLHeli@{setDutyCycleBLHeli}!ESC\_BLHeli.h@{ESC\_BLHeli.h}}
+\doxysubsubsection{\texorpdfstring{setDutyCycleBLHeli()}{setDutyCycleBLHeli()}}
+{\footnotesize\ttfamily void set\+Duty\+Cycle\+BLHeli (\begin{DoxyParamCaption}\item[{float}]{voltage }\end{DoxyParamCaption})}
+
+
+
+Sets the Duty Cycle for the ESC by converting the voltage into a duty cycle then communicating with the timer to set that duty cycle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & The desired voltage to be applied to the motors. Ranges from 0 to the max defined voltage. \\
+\hline
+\end{DoxyParams}

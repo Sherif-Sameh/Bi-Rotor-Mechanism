@@ -1,0 +1,185 @@
+\hypertarget{_m_p_u___advanced_8h}{}\doxysection{MPU\+\_\+\+Advanced.\+h File Reference}
+\label{_m_p_u___advanced_8h}\index{MPU\_Advanced.h@{MPU\_Advanced.h}}
+
+
+For changing the device\textquotesingle{}s configuration. This file includes all the function prototypes and macros for changing the configuration of the MPU6050 such as clock source, sample rate, enable data ready interrupt, etc....  
+
+
+{\ttfamily \#include \char`\"{}MPU\+\_\+\+Shared.\+h\char`\"{}}\newline
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65}{clock\+Source}} \{ \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65aa86f483b23c6c34e352ff3388988a4e3}{INTOSC}}
+, \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a1f64887df171802b6177908e98e3442c}{GYRO\+\_\+X}}
+, \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a23c47aaf3cfd5cae0825bb0db92c4e3b}{GYRO\+\_\+Y}}
+, \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a76123fb157e292ee9f0d0c561f86e2c3}{GYRO\+\_\+Z}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_ade7e5f350ceed9094612d09c5411c004}{set\+Clock\+Source}} (enum \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65}{clock\+Source}} CS)
+\begin{DoxyCompactList}\small\item\em This function is used to set a clock source, by default the internal oscillator is used. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_aa81fac67710dc3f63c9552ea6e5f3772}{reset\+Acc\+Signal\+Path}} ()
+\begin{DoxyCompactList}\small\item\em This function will revert the ADC and DLPF settings for the accelerometers to their default values. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_a0360b0dadd56e30cc47bf62d9c527d18}{reset\+Gyro\+Signal\+Path}} ()
+\begin{DoxyCompactList}\small\item\em This function will revert the ADC and DLPF settings for the gyroscopes to their default values. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_ae488b1a527a145947ad94e742092a516}{reset\+Temp\+Signal\+Path}} ()
+\begin{DoxyCompactList}\small\item\em function will revert the ADC and DLPF settings for the temperature sensor to their default values. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_a403a940d68fd377e00a740ff2a87e3f0}{data\+RDY\+\_\+\+IE}} ()
+\begin{DoxyCompactList}\small\item\em Enable data\+\_\+ready interrupt. This function will enable the data ready interrupt which is set everytime new readings are written to the sensor registers after passing by the ADC and the DLPF. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_a49df46842148d877e2934294e4f1b325}{set\+DLPF}} (uint8\+\_\+t DLPF\+\_\+\+CFG)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___advanced_8h_a93836db8098256ba7f5f8c6f6ede2f77}{set\+Sample\+Rate}} (uint16\+\_\+t sample\+Rate)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+For changing the device\textquotesingle{}s configuration. This file includes all the function prototypes and macros for changing the configuration of the MPU6050 such as clock source, sample rate, enable data ready interrupt, etc.... 
+
+\begin{DoxyAuthor}{Author}
+Sherif Sameh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/14
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65}\label{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!clockSource@{clockSource}}
+\index{clockSource@{clockSource}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{clockSource}{clockSource}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65}{clock\+Source}}}
+
+An enum for choosing the clock source. Chooses between internal oscillator or one of the gyros. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INTOSC@{INTOSC}!MPU\_Advanced.h@{MPU\_Advanced.h}}\index{MPU\_Advanced.h@{MPU\_Advanced.h}!INTOSC@{INTOSC}}}\mbox{\Hypertarget{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65aa86f483b23c6c34e352ff3388988a4e3}\label{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65aa86f483b23c6c34e352ff3388988a4e3}} 
+INTOSC&Internal oscillator \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_X@{GYRO\_X}!MPU\_Advanced.h@{MPU\_Advanced.h}}\index{MPU\_Advanced.h@{MPU\_Advanced.h}!GYRO\_X@{GYRO\_X}}}\mbox{\Hypertarget{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a1f64887df171802b6177908e98e3442c}\label{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a1f64887df171802b6177908e98e3442c}} 
+GYRO\+\_\+X&X-\/axis gyroscope \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_Y@{GYRO\_Y}!MPU\_Advanced.h@{MPU\_Advanced.h}}\index{MPU\_Advanced.h@{MPU\_Advanced.h}!GYRO\_Y@{GYRO\_Y}}}\mbox{\Hypertarget{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a23c47aaf3cfd5cae0825bb0db92c4e3b}\label{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a23c47aaf3cfd5cae0825bb0db92c4e3b}} 
+GYRO\+\_\+Y&Y-\/axis gyroscope \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_Z@{GYRO\_Z}!MPU\_Advanced.h@{MPU\_Advanced.h}}\index{MPU\_Advanced.h@{MPU\_Advanced.h}!GYRO\_Z@{GYRO\_Z}}}\mbox{\Hypertarget{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a76123fb157e292ee9f0d0c561f86e2c3}\label{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65a76123fb157e292ee9f0d0c561f86e2c3}} 
+GYRO\+\_\+Z&Z-\/axis gyroscope \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_ade7e5f350ceed9094612d09c5411c004}\label{_m_p_u___advanced_8h_ade7e5f350ceed9094612d09c5411c004}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!setClockSource@{setClockSource}}
+\index{setClockSource@{setClockSource}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{setClockSource()}{setClockSource()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+Clock\+Source (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{_m_p_u___advanced_8h_ac1d73f8fcfec5a31cf432886b3361d65}{clock\+Source}}}]{CS }\end{DoxyParamCaption})}
+
+
+
+This function is used to set a clock source, by default the internal oscillator is used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em CS} & The enum of type clock\+Source used to set the clock source of the MPU6050. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+It is recommended by the manufacturer to use one of the gyros for improved clock stability. 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_aa81fac67710dc3f63c9552ea6e5f3772}\label{_m_p_u___advanced_8h_aa81fac67710dc3f63c9552ea6e5f3772}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!resetAccSignalPath@{resetAccSignalPath}}
+\index{resetAccSignalPath@{resetAccSignalPath}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{resetAccSignalPath()}{resetAccSignalPath()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t reset\+Acc\+Signal\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function will revert the ADC and DLPF settings for the accelerometers to their default values. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_a0360b0dadd56e30cc47bf62d9c527d18}\label{_m_p_u___advanced_8h_a0360b0dadd56e30cc47bf62d9c527d18}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!resetGyroSignalPath@{resetGyroSignalPath}}
+\index{resetGyroSignalPath@{resetGyroSignalPath}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{resetGyroSignalPath()}{resetGyroSignalPath()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t reset\+Gyro\+Signal\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function will revert the ADC and DLPF settings for the gyroscopes to their default values. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_ae488b1a527a145947ad94e742092a516}\label{_m_p_u___advanced_8h_ae488b1a527a145947ad94e742092a516}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!resetTempSignalPath@{resetTempSignalPath}}
+\index{resetTempSignalPath@{resetTempSignalPath}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{resetTempSignalPath()}{resetTempSignalPath()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t reset\+Temp\+Signal\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function will revert the ADC and DLPF settings for the temperature sensor to their default values. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_a403a940d68fd377e00a740ff2a87e3f0}\label{_m_p_u___advanced_8h_a403a940d68fd377e00a740ff2a87e3f0}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!dataRDY\_IE@{dataRDY\_IE}}
+\index{dataRDY\_IE@{dataRDY\_IE}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{dataRDY\_IE()}{dataRDY\_IE()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t data\+RDY\+\_\+\+IE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enable data\+\_\+ready interrupt. This function will enable the data ready interrupt which is set everytime new readings are written to the sensor registers after passing by the ADC and the DLPF. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_a49df46842148d877e2934294e4f1b325}\label{_m_p_u___advanced_8h_a49df46842148d877e2934294e4f1b325}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!setDLPF@{setDLPF}}
+\index{setDLPF@{setDLPF}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{setDLPF()}{setDLPF()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+DLPF (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{DLPF\+\_\+\+CFG }\end{DoxyParamCaption})}
+
+This function is used to configure the digital low-\/pass filter (DLPF) for both the gyroscope and accelerometer readings. 
+\begin{DoxyParams}{Parameters}
+{\em DLPF\+\_\+\+CFG} & This is the value written to the register and ranges from 0 to 6, the exact bandwidth and delay associated with each value can found in page 13 of the MPU6050\textquotesingle{}s register map document. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___advanced_8h_a93836db8098256ba7f5f8c6f6ede2f77}\label{_m_p_u___advanced_8h_a93836db8098256ba7f5f8c6f6ede2f77}} 
+\index{MPU\_Advanced.h@{MPU\_Advanced.h}!setSampleRate@{setSampleRate}}
+\index{setSampleRate@{setSampleRate}!MPU\_Advanced.h@{MPU\_Advanced.h}}
+\doxysubsubsection{\texorpdfstring{setSampleRate()}{setSampleRate()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+Sample\+Rate (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{sample\+Rate }\end{DoxyParamCaption})}
+
+This function sets the sample rate divider of the MPU6050 according to the desired sample rate and the current DLPF settings. 
+\begin{DoxyParams}{Parameters}
+{\em sample\+Rate} & The desired sampling rate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+It\textquotesingle{}s advised to recall this function everytime set\+DLPF(char DLPF\+\_\+\+CFG) is called because that could indirectly change the sampling rate. 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}

@@ -1,0 +1,115 @@
+\hypertarget{_l_p_c_8h}{}\doxysection{LPC.\+h File Reference}
+\label{_l_p_c_8h}\index{LPC.h@{LPC.h}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+master\+\_\+spi.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union_f2_b}{F2B}}
+\item 
+class \mbox{\hyperlink{class_l_p_c}{LPC}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_l_p_c_8h_a87033fa8c41741ba1395687112165683}{encode\+\_\+message}} (uint8\+\_\+t $\ast$data, uint8\+\_\+t data\+\_\+array\+\_\+length, uint8\+\_\+t message\+\_\+id)
+\begin{DoxyCompactList}\small\item\em A method to decode the message we want to send over \mbox{\hyperlink{class_l_p_c}{LPC}} and puts it in \mbox{\hyperlink{class_l_p_c}{LPC}} format. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_l_p_c_8h_ae01b92e793e117a7fae9827b42d95c09}{gen\+\_\+first\+\_\+byte}} (uint8\+\_\+t message\+\_\+id)
+\begin{DoxyCompactList}\small\item\em This is a function that generates the very first byte of data that will be sent using the \mbox{\hyperlink{class_l_p_c}{LPC}}. This is the byte that contains the characteristics of the message. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_l_p_c_8h_a07a0c5d85ccd177519289be1f847dfc5}{get\+\_\+message\+\_\+length}} (uint8\+\_\+t mesg\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Get the message length of a message. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_l_p_c_8h_a7a7885c209d319321cac28de66b5dc32}{decode\+\_\+id}} (uint8\+\_\+t first\+\_\+msg\+\_\+byte)
+\begin{DoxyCompactList}\small\item\em gets the id of the message in order to know the type of data received \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ziad Alwareh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/01-\/03
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_l_p_c_8h_a87033fa8c41741ba1395687112165683}\label{_l_p_c_8h_a87033fa8c41741ba1395687112165683}} 
+\index{LPC.h@{LPC.h}!encode\_message@{encode\_message}}
+\index{encode\_message@{encode\_message}!LPC.h@{LPC.h}}
+\doxysubsubsection{\texorpdfstring{encode\_message()}{encode\_message()}}
+{\footnotesize\ttfamily void encode\+\_\+message (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{data\+\_\+array\+\_\+length,  }\item[{uint8\+\_\+t}]{message\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+A method to decode the message we want to send over \mbox{\hyperlink{class_l_p_c}{LPC}} and puts it in \mbox{\hyperlink{class_l_p_c}{LPC}} format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & This is a pointer to the array of data we want to send. \\
+\hline
+{\em data\+\_\+array\+\_\+length} & This is the length of the array we passed a pointer referring to. \\
+\hline
+{\em message\+\_\+id} & This is the id of the message we want to send according to the \mbox{\hyperlink{class_l_p_c}{LPC}} protocol. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_l_p_c_8h_autotoc_md0}{}\doxysubsubsection{MSG ID   $\vert$   Message\+Type     $\vert$  Length of message in Words (1 word = 4 bytes)}\label{_l_p_c_8h_autotoc_md0}
+0 $\vert$ Change Mode $\vert$ 1 1 $\vert$ Pitch $\vert$ 2 2 $\vert$ Elevation $\vert$ 2 3 $\vert$ Reference point $\vert$ 2 4 $\vert$ ACK $\vert$ 0 5 $\vert$ NACK $\vert$ 0 6 $\vert$ Reserved $\vert$ -\/ 7 $\vert$ Reserved $\vert$ -\/ \mbox{\Hypertarget{_l_p_c_8h_ae01b92e793e117a7fae9827b42d95c09}\label{_l_p_c_8h_ae01b92e793e117a7fae9827b42d95c09}} 
+\index{LPC.h@{LPC.h}!gen\_first\_byte@{gen\_first\_byte}}
+\index{gen\_first\_byte@{gen\_first\_byte}!LPC.h@{LPC.h}}
+\doxysubsubsection{\texorpdfstring{gen\_first\_byte()}{gen\_first\_byte()}}
+{\footnotesize\ttfamily uint8\+\_\+t gen\+\_\+first\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{message\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+This is a function that generates the very first byte of data that will be sent using the \mbox{\hyperlink{class_l_p_c}{LPC}}. This is the byte that contains the characteristics of the message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message\+\_\+id} & This is the id of the message we want to send according to the \mbox{\hyperlink{class_l_p_c}{LPC}} protocol. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_l_p_c_8h_autotoc_md1}{}\doxysubsubsection{MSG ID   $\vert$   Message\+Type     $\vert$  Length of message in Words (1 word = 4 bytes)}\label{_l_p_c_8h_autotoc_md1}
+0 $\vert$ Change Mode $\vert$ 1 1 $\vert$ Pitch $\vert$ 2 2 $\vert$ Elevation $\vert$ 2 3 $\vert$ Reference point $\vert$ 2 4 $\vert$ ACK $\vert$ 0 5 $\vert$ NACK $\vert$ 0 6 $\vert$ Reserved $\vert$ -\/ 7 $\vert$ Reserved $\vert$ -\/ \begin{DoxyReturn}{Returns}
+uint8\+\_\+t this is the created byte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c_8h_a07a0c5d85ccd177519289be1f847dfc5}\label{_l_p_c_8h_a07a0c5d85ccd177519289be1f847dfc5}} 
+\index{LPC.h@{LPC.h}!get\_message\_length@{get\_message\_length}}
+\index{get\_message\_length@{get\_message\_length}!LPC.h@{LPC.h}}
+\doxysubsubsection{\texorpdfstring{get\_message\_length()}{get\_message\_length()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+message\+\_\+length (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mesg\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Get the message length of a message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesg\+\_\+id} & The id of the message that will be sent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t which is the length of the message 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c_8h_a7a7885c209d319321cac28de66b5dc32}\label{_l_p_c_8h_a7a7885c209d319321cac28de66b5dc32}} 
+\index{LPC.h@{LPC.h}!decode\_id@{decode\_id}}
+\index{decode\_id@{decode\_id}!LPC.h@{LPC.h}}
+\doxysubsubsection{\texorpdfstring{decode\_id()}{decode\_id()}}
+{\footnotesize\ttfamily uint8\+\_\+t decode\+\_\+id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{first\+\_\+msg\+\_\+byte }\end{DoxyParamCaption})}
+
+
+
+gets the id of the message in order to know the type of data received 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+\_\+msg\+\_\+byte} & This is the first received byte from the transaction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t containing the id of the message 
+\end{DoxyReturn}

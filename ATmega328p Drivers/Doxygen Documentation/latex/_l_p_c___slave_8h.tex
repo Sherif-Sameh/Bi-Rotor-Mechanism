@@ -1,0 +1,235 @@
+\hypertarget{_l_p_c___slave_8h}{}\doxysection{LPC\+\_\+\+Slave.\+h File Reference}
+\label{_l_p_c___slave_8h}\index{LPC\_Slave.h@{LPC\_Slave.h}}
+{\ttfamily \#include \char`\"{}SPI\+\_\+\+Slave.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdbool.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionf2b}{f2b}}
+\begin{DoxyCompactList}\small\item\em A global union that is used to convert from byte to float and vice versa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\+\_\+type\+\_\+t}} \{ \newline
+{\bfseries MSG\+\_\+\+TYPE\+\_\+\+PITCH}
+, {\bfseries MSG\+\_\+\+TYPE\+\_\+\+ELEVATION}
+, {\bfseries MSG\+\_\+\+TYPE\+\_\+\+REFERENCE}
+, {\bfseries MSG\+\_\+\+TYPE\+\_\+\+CHANGE\+\_\+\+MODE}
+, \newline
+{\bfseries MSG\+\_\+\+TYPE\+\_\+\+ACK}
+, {\bfseries MSG\+\_\+\+TYPE\+\_\+\+NACK}
+, {\bfseries MSG\+\_\+\+FAILURE}
+, {\bfseries MSG\+\_\+\+SUCCESS}
+ \}
+\begin{DoxyCompactList}\small\item\em This is the types of messages that could be outputted to the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_l_p_c___slave_8h_a4b5805b48394de582007f450e187374c}{initialize\+\_\+\+LPC}} (uint8\+\_\+t SPI\+\_\+\+MODE)
+\begin{DoxyCompactList}\small\item\em This is a method that will initialize the SPI of the LPC slave. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_l_p_c___slave_8h_a86d640d09b65c3527c56438d50e4acf7}{get\+\_\+msg\+\_\+id}} (uint8\+\_\+t start\+\_\+byte)
+\begin{DoxyCompactList}\small\item\em Get the msg id of the transaction. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_l_p_c___slave_8h_a74d148ebd4205a184ce1e2ea89716e68}{get\+\_\+msg\+\_\+length}} (uint8\+\_\+t msg\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Get the msg length. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_l_p_c___slave_8h_ac2c0f781ac38ca35f3ec5115c5f9b981}{send\+\_\+\+ACK}} ()
+\begin{DoxyCompactList}\small\item\em Sends ACK to the master indicating successful data transaction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_l_p_c___slave_8h_a92fe58192c69ebc45158bf31a95cc071}{send\+\_\+\+NACK}} ()
+\begin{DoxyCompactList}\small\item\em Sends NACK to the master indicating a failed data transaction. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_l_p_c___slave_8h_ae4c8053efde163a2584b8f1ba62e6f76}{compare\+\_\+crc8}} (uint8\+\_\+t $\ast$msg\+\_\+received, uint8\+\_\+t msg\+\_\+length)
+\begin{DoxyCompactList}\small\item\em computes crc8 and compares it to that computed by the master to signify whether it was a successful or a failed data transaction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\+\_\+type\+\_\+t}} \mbox{\hyperlink{_l_p_c___slave_8h_aef1930dbc7c4c0b3ce1557a9c2a91ddd}{LPC\+\_\+decode}} (uint8\+\_\+t $\ast$msg\+\_\+received, uint8\+\_\+t msg\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Decodes the LPC message. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_l_p_c___slave_8h_a4b6f4e50433444e8d97e28deee789ce4}{get\+\_\+current\+\_\+mode}} ()
+\begin{DoxyCompactList}\small\item\em Get the current mode of operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_l_p_c___slave_8h_a7a90e5dcc37a570c607b5524da7ba197}{get\+\_\+decoded\+\_\+data}} (float $\ast$output\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Get the decoded data that we received and copies it to an array input by the user. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\+\_\+type\+\_\+t}} \mbox{\hyperlink{_l_p_c___slave_8h_a8e518d2123fe2346301c2c428a3c9e07}{receive\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em a method to receive data via LPC \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ziad Alwareh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/01-\/02
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}\label{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!msg\_type\_t@{msg\_type\_t}}
+\index{msg\_type\_t@{msg\_type\_t}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{msg\_type\_t}{msg\_type\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\+\_\+type\+\_\+t}}}
+
+
+
+This is the types of messages that could be outputted to the user. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a4b5805b48394de582007f450e187374c}\label{_l_p_c___slave_8h_a4b5805b48394de582007f450e187374c}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!initialize\_LPC@{initialize\_LPC}}
+\index{initialize\_LPC@{initialize\_LPC}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_LPC()}{initialize\_LPC()}}
+{\footnotesize\ttfamily void initialize\+\_\+\+LPC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{SPI\+\_\+\+MODE }\end{DoxyParamCaption})}
+
+
+
+This is a method that will initialize the SPI of the LPC slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPI\+\_\+\+MODE} & This is the SPI mode that we want. 0 -\/-\/\texorpdfstring{$>$}{>} mode 0, 1 -\/-\/\texorpdfstring{$>$}{>} mode 1, 2 -\/-\/\texorpdfstring{$>$}{>} mode 2, 3 -\/-\/\texorpdfstring{$>$}{>} mode 3 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a86d640d09b65c3527c56438d50e4acf7}\label{_l_p_c___slave_8h_a86d640d09b65c3527c56438d50e4acf7}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!get\_msg\_id@{get\_msg\_id}}
+\index{get\_msg\_id@{get\_msg\_id}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{get\_msg\_id()}{get\_msg\_id()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+msg\+\_\+id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{start\+\_\+byte }\end{DoxyParamCaption})}
+
+
+
+Get the msg id of the transaction. 
+
+\hypertarget{_l_p_c___slave_8h_autotoc_md0}{}\doxysubsubsection{$\ast$ MSG ID   $\vert$   Message\+Type     $\vert$  Length of message in Words (1 word = 4 bytes)}\label{_l_p_c___slave_8h_autotoc_md0}
+0 $\vert$ Change Mode $\vert$ 1 1 $\vert$ Pitch $\vert$ 2 2 $\vert$ Elevation $\vert$ 2 3 $\vert$ Reference point $\vert$ 2 4 $\vert$ ACK $\vert$ 0 5 $\vert$ NACK $\vert$ 0 6 $\vert$ Reserved $\vert$ -\/ 7 $\vert$ Reserved $\vert$ -\/
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+byte} & This is the first byte received during an LPC interaction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t this is the returned ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a74d148ebd4205a184ce1e2ea89716e68}\label{_l_p_c___slave_8h_a74d148ebd4205a184ce1e2ea89716e68}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!get\_msg\_length@{get\_msg\_length}}
+\index{get\_msg\_length@{get\_msg\_length}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{get\_msg\_length()}{get\_msg\_length()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+msg\+\_\+length (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msg\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Get the msg length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg\+\_\+id} & The ID of the message as embedded in the start byte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t which is the length of the message in bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c___slave_8h_ac2c0f781ac38ca35f3ec5115c5f9b981}\label{_l_p_c___slave_8h_ac2c0f781ac38ca35f3ec5115c5f9b981}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!send\_ACK@{send\_ACK}}
+\index{send\_ACK@{send\_ACK}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{send\_ACK()}{send\_ACK()}}
+{\footnotesize\ttfamily void send\+\_\+\+ACK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sends ACK to the master indicating successful data transaction. 
+
+\mbox{\Hypertarget{_l_p_c___slave_8h_a92fe58192c69ebc45158bf31a95cc071}\label{_l_p_c___slave_8h_a92fe58192c69ebc45158bf31a95cc071}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!send\_NACK@{send\_NACK}}
+\index{send\_NACK@{send\_NACK}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{send\_NACK()}{send\_NACK()}}
+{\footnotesize\ttfamily void send\+\_\+\+NACK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sends NACK to the master indicating a failed data transaction. 
+
+\mbox{\Hypertarget{_l_p_c___slave_8h_ae4c8053efde163a2584b8f1ba62e6f76}\label{_l_p_c___slave_8h_ae4c8053efde163a2584b8f1ba62e6f76}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!compare\_crc8@{compare\_crc8}}
+\index{compare\_crc8@{compare\_crc8}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{compare\_crc8()}{compare\_crc8()}}
+{\footnotesize\ttfamily bool compare\+\_\+crc8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{msg\+\_\+received,  }\item[{uint8\+\_\+t}]{msg\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+computes crc8 and compares it to that computed by the master to signify whether it was a successful or a failed data transaction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg\+\_\+received} & the full message as received from master \\
+\hline
+{\em msg\+\_\+length} & Length of the msg\+\_\+received array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c___slave_8h_aef1930dbc7c4c0b3ce1557a9c2a91ddd}\label{_l_p_c___slave_8h_aef1930dbc7c4c0b3ce1557a9c2a91ddd}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!LPC\_decode@{LPC\_decode}}
+\index{LPC\_decode@{LPC\_decode}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{LPC\_decode()}{LPC\_decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\+\_\+type\+\_\+t}} LPC\+\_\+decode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{msg\+\_\+received,  }\item[{uint8\+\_\+t}]{msg\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Decodes the LPC message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg\+\_\+received} & The entire received message, including the crc and start bytes \\
+\hline
+{\em msg\+\_\+id} & The id of the received message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+msg\+\_\+type\+\_\+t which contains the type of message that was decoded. The method also sets the global variables with the data decoded. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a4b6f4e50433444e8d97e28deee789ce4}\label{_l_p_c___slave_8h_a4b6f4e50433444e8d97e28deee789ce4}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!get\_current\_mode@{get\_current\_mode}}
+\index{get\_current\_mode@{get\_current\_mode}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{get\_current\_mode()}{get\_current\_mode()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+current\+\_\+mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current mode of operation. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a7a90e5dcc37a570c607b5524da7ba197}\label{_l_p_c___slave_8h_a7a90e5dcc37a570c607b5524da7ba197}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!get\_decoded\_data@{get\_decoded\_data}}
+\index{get\_decoded\_data@{get\_decoded\_data}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{get\_decoded\_data()}{get\_decoded\_data()}}
+{\footnotesize\ttfamily void get\+\_\+decoded\+\_\+data (\begin{DoxyParamCaption}\item[{float $\ast$}]{output\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Get the decoded data that we received and copies it to an array input by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+\_\+data} & pointer to the array input from the user that we want to copy teh decoded data into \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_l_p_c___slave_8h_a8e518d2123fe2346301c2c428a3c9e07}\label{_l_p_c___slave_8h_a8e518d2123fe2346301c2c428a3c9e07}} 
+\index{LPC\_Slave.h@{LPC\_Slave.h}!receive\_data@{receive\_data}}
+\index{receive\_data@{receive\_data}!LPC\_Slave.h@{LPC\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{receive\_data()}{receive\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\+\_\+type\+\_\+t}} receive\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+a method to receive data via LPC 
+
+\begin{DoxyReturn}{Returns}
+msg\+\_\+type\+\_\+t 
+\end{DoxyReturn}

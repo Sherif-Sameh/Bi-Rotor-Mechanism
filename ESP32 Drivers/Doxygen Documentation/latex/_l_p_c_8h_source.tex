@@ -1,0 +1,50 @@
+\hypertarget{_l_p_c_8h_source}{}\doxysection{LPC.\+h}
+\mbox{\hyperlink{_l_p_c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef LPC\_ESP}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define LPC\_ESP}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{esp__master__spi_8h}{esp\_master\_spi.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{18     \textcolor{keywordtype}{float} float\_num[2];}
+\DoxyCodeLine{19     uint8\_t byte\_eqv[8];}
+\DoxyCodeLine{20 \} \mbox{\hyperlink{union_f2_b}{F2B}};}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{class_l_p_c}{LPC}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keyword}{private}:}
+\DoxyCodeLine{24         SPISettings Mysettings;}
+\DoxyCodeLine{25         SPIClass * SPI;}
+\DoxyCodeLine{26         \mbox{\hyperlink{union_f2_b}{F2B}} MSG\_data;}
+\DoxyCodeLine{27     \textcolor{keyword}{public}:}
+\DoxyCodeLine{40         \mbox{\hyperlink{class_l_p_c_a0a5c0bb60544f6f272443b136ab103c3}{LPC}}(uint8\_t spi\_port\_num, uint32\_t clkf, uint8\_t spi\_mode, \textcolor{keywordtype}{char} first\_bit\_transfered);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_p_c_a3316d63319661e03a9d10a2d0e76aba1}{send\_ACK}}();}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{52         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_p_c_ada08e6697abe857a436d9df5d0fee3b9}{send\_NACK}}();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{62         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_p_c_aa6e9e80eea10e6fd0b695bb498d3ef4b}{set\_mode}}(uint8\_t mode\_num);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_p_c_a698c38e0acef2fa4ba5cb1c0a7bd90aa}{send\_reference}}(\textcolor{keywordtype}{float} * data);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{81         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_p_c_a5b2a83277df1fc71f8e0c86aee799775}{end\_transaction}}();}
+\DoxyCodeLine{82         }
+\DoxyCodeLine{92         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_p_c_a2d3f5b35266043add6e11a01957247a5}{Send\_message}}(\textcolor{keywordtype}{float} * data, uint8\_t \textcolor{keywordtype}{id});}
+\DoxyCodeLine{101         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_p_c_af08ad156dee78908f79917f243a57e32}{send\_pitch}}(\textcolor{keywordtype}{float} * data);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{111         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_p_c_ae7dee9ce416c8c371be95ed9d824a783}{send\_elevation}}(\textcolor{keywordtype}{float} * data);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{119         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_p_c_ae1a6095c130667c9230a1528987c62be}{set\_MSG\_data}}(\textcolor{keywordtype}{float}* data);}
+\DoxyCodeLine{120 \};}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{142         \textcolor{keywordtype}{void} \mbox{\hyperlink{_l_p_c_8h_a87033fa8c41741ba1395687112165683}{encode\_message}}(uint8\_t * data, uint8\_t data\_array\_length, uint8\_t message\_id);}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{162         uint8\_t \mbox{\hyperlink{_l_p_c_8h_ae01b92e793e117a7fae9827b42d95c09}{gen\_first\_byte}}(uint8\_t message\_id);}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{170         uint8\_t \mbox{\hyperlink{_l_p_c_8h_a07a0c5d85ccd177519289be1f847dfc5}{get\_message\_length}}(uint8\_t mesg\_id);}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{178         uint8\_t \mbox{\hyperlink{_l_p_c_8h_a7a7885c209d319321cac28de66b5dc32}{decode\_id}}(uint8\_t first\_msg\_byte);}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

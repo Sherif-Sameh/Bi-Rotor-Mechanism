@@ -1,0 +1,205 @@
+\hypertarget{_m_c_a_l___t_i_m_e_r2_8h}{}\doxysection{MCAL\+\_\+\+TIMER2.\+h File Reference}
+\label{_m_c_a_l___t_i_m_e_r2_8h}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+
+
+For Confiuring Timer 2 in Phase Correct PWM mode. This driver is responsible for configuring Timer 2 of the ATMega32 to work in phase correct PWM mode with the specified frequecy as well as controlling the duty cycle of the PWM signal.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a38a9b3e78388211e30a03cd7d08412c0}{CPU\+\_\+\+CLK\+\_\+\+FREQ\+\_\+\+HZ}}~((uint32\+\_\+t) 16000000)
+\item 
+\#define \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a7e4b5a44e1c2c074a3cb0dc3a7da610b}{OCR2\+B\+\_\+\+PIN}}~PD3
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fc}{TIMER2\+\_\+\+PRESCALAR}} \{ \newline
+\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca5b7201155ad173f130b250dc77832467}{TIMER2\+\_\+\+N\+\_\+1}} = 1
+, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca09f61511326cd88adfbccf6d27b85ffa}{TIMER2\+\_\+\+N\+\_\+8}} = 2
+, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaf92376a0853363c4ff0f4be3df6714e7}{TIMER2\+\_\+\+N\+\_\+32}} = 3
+, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca38643f2da73fd50b920b40b482648c04}{TIMER2\+\_\+\+N\+\_\+64}} = 4
+, \newline
+\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcad492a095db6c9c239df330496637bf61}{TIMER2\+\_\+\+N\+\_\+128}} = 5
+, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca9ddc6e20ef47116ec250e0b243e088f2}{TIMER2\+\_\+\+N\+\_\+256}} = 6
+, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaa91479079d1396f99ae83e061d44ee50}{TIMER2\+\_\+\+N\+\_\+1024}} = 7
+ \}
+\begin{DoxyCompactList}\small\item\em Enum used to abstract the register values needed for each prescalar value. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\+\_\+\+PWM\+\_\+\+COM}} \{ \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5a3b0bd64c380ea6271d695ab846d6415f}{TIMER2\+\_\+\+PWM\+\_\+\+NON\+\_\+\+INVERTED}}
+, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5ae585836e38537fb33fc7b76aab362b90}{TIMER2\+\_\+\+PWM\+\_\+\+INVERTED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum used for choosing the PWM\textquotesingle{}s compare output mode (COM). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a9b4e410e3a83ba91fd0ebbff123d4913}{get\+OCRATimer2}} ()
+\begin{DoxyCompactList}\small\item\em A function to return the value of OCRA. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a4dc24ccbf6ca29e0fffc5587cd14bad5}{init\+Timer2}} (uint32\+\_\+t pwm\+Frequency\+Hz, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\+\_\+\+PWM\+\_\+\+COM}} working\+Mode)
+\begin{DoxyCompactList}\small\item\em Initialize Timer 2 in Phase Correct PWM Mode. This function will configures all the relevant uC registers in order to initialize the timer in PC PWM mode with the desired frequency and working mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3f45e69b6e316e9a9a9e0d8b9bb8106}{disable\+Timer2}} ()
+\begin{DoxyCompactList}\small\item\em Disables Timer 2. This function will reset all relevant uC registers in order to totally disable the timer\textquotesingle{}s operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a78c14757e545944a1ad532c81990b777}{set\+Duty\+Cycle\+Timer2}} (float duty\+Cycle)
+\begin{DoxyCompactList}\small\item\em Set the Duty Cycle of Timer 2 This function will calculate the needed values for the OC register in order to get the desired duty cycle at the current frequency and COM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+For Confiuring Timer 2 in Phase Correct PWM mode. This driver is responsible for configuring Timer 2 of the ATMega32 to work in phase correct PWM mode with the specified frequecy as well as controlling the duty cycle of the PWM signal. 
+
+\begin{DoxyAuthor}{Author}
+Sherif Sameh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/01-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_a38a9b3e78388211e30a03cd7d08412c0}\label{_m_c_a_l___t_i_m_e_r2_8h_a38a9b3e78388211e30a03cd7d08412c0}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!CPU\_CLK\_FREQ\_HZ@{CPU\_CLK\_FREQ\_HZ}}
+\index{CPU\_CLK\_FREQ\_HZ@{CPU\_CLK\_FREQ\_HZ}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{CPU\_CLK\_FREQ\_HZ}{CPU\_CLK\_FREQ\_HZ}}
+{\footnotesize\ttfamily \#define CPU\+\_\+\+CLK\+\_\+\+FREQ\+\_\+\+HZ~((uint32\+\_\+t) 16000000)}
+
+This macro is used to define the CPU\textquotesingle{}s operating clock frequeny in Hz as to have the ability to automatically adjust the values needed in the Output compare registers in order to generate the PWM signal at the desired frequency. \mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_a7e4b5a44e1c2c074a3cb0dc3a7da610b}\label{_m_c_a_l___t_i_m_e_r2_8h_a7e4b5a44e1c2c074a3cb0dc3a7da610b}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!OCR2B\_PIN@{OCR2B\_PIN}}
+\index{OCR2B\_PIN@{OCR2B\_PIN}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{OCR2B\_PIN}{OCR2B\_PIN}}
+{\footnotesize\ttfamily \#define OCR2\+B\+\_\+\+PIN~PD3}
+
+This macro defines the pin that the PWM signal is output to in order to be able to configure it as an output during the initialization process. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fc}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fc}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_PRESCALAR@{TIMER2\_PRESCALAR}}
+\index{TIMER2\_PRESCALAR@{TIMER2\_PRESCALAR}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{TIMER2\_PRESCALAR}{TIMER2\_PRESCALAR}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fc}{TIMER2\+\_\+\+PRESCALAR}}}
+
+
+
+Enum used to abstract the register values needed for each prescalar value. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_1@{TIMER2\_N\_1}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_1@{TIMER2\_N\_1}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca5b7201155ad173f130b250dc77832467}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca5b7201155ad173f130b250dc77832467}} 
+TIMER2\+\_\+\+N\+\_\+1&Prescalar = 1 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_8@{TIMER2\_N\_8}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_8@{TIMER2\_N\_8}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca09f61511326cd88adfbccf6d27b85ffa}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca09f61511326cd88adfbccf6d27b85ffa}} 
+TIMER2\+\_\+\+N\+\_\+8&Prescalar = 8 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_32@{TIMER2\_N\_32}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_32@{TIMER2\_N\_32}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaf92376a0853363c4ff0f4be3df6714e7}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaf92376a0853363c4ff0f4be3df6714e7}} 
+TIMER2\+\_\+\+N\+\_\+32&Prescalar = 32 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_64@{TIMER2\_N\_64}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_64@{TIMER2\_N\_64}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca38643f2da73fd50b920b40b482648c04}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca38643f2da73fd50b920b40b482648c04}} 
+TIMER2\+\_\+\+N\+\_\+64&Prescalar = 64 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_128@{TIMER2\_N\_128}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_128@{TIMER2\_N\_128}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcad492a095db6c9c239df330496637bf61}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcad492a095db6c9c239df330496637bf61}} 
+TIMER2\+\_\+\+N\+\_\+128&Prescalar = 128 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_256@{TIMER2\_N\_256}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_256@{TIMER2\_N\_256}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca9ddc6e20ef47116ec250e0b243e088f2}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca9ddc6e20ef47116ec250e0b243e088f2}} 
+TIMER2\+\_\+\+N\+\_\+256&Prescalar = 256 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_N\_1024@{TIMER2\_N\_1024}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_N\_1024@{TIMER2\_N\_1024}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaa91479079d1396f99ae83e061d44ee50}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaa91479079d1396f99ae83e061d44ee50}} 
+TIMER2\+\_\+\+N\+\_\+1024&Prescalar = 1024 \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}\label{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_PWM\_COM@{TIMER2\_PWM\_COM}}
+\index{TIMER2\_PWM\_COM@{TIMER2\_PWM\_COM}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{TIMER2\_PWM\_COM}{TIMER2\_PWM\_COM}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\+\_\+\+PWM\+\_\+\+COM}}}
+
+
+
+Enum used for choosing the PWM\textquotesingle{}s compare output mode (COM). 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_PWM\_NON\_INVERTED@{TIMER2\_PWM\_NON\_INVERTED}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_PWM\_NON\_INVERTED@{TIMER2\_PWM\_NON\_INVERTED}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5a3b0bd64c380ea6271d695ab846d6415f}\label{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5a3b0bd64c380ea6271d695ab846d6415f}} 
+TIMER2\+\_\+\+PWM\+\_\+\+NON\+\_\+\+INVERTED&COM = Non Inverted \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER2\_PWM\_INVERTED@{TIMER2\_PWM\_INVERTED}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!TIMER2\_PWM\_INVERTED@{TIMER2\_PWM\_INVERTED}}}\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5ae585836e38537fb33fc7b76aab362b90}\label{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5ae585836e38537fb33fc7b76aab362b90}} 
+TIMER2\+\_\+\+PWM\+\_\+\+INVERTED&COM = Inverted \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_a9b4e410e3a83ba91fd0ebbff123d4913}\label{_m_c_a_l___t_i_m_e_r2_8h_a9b4e410e3a83ba91fd0ebbff123d4913}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!getOCRATimer2@{getOCRATimer2}}
+\index{getOCRATimer2@{getOCRATimer2}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{getOCRATimer2()}{getOCRATimer2()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+OCRATimer2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function to return the value of OCRA. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Return the values stored in register OCR2A (sets the frequency of the PWM signal). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_a4dc24ccbf6ca29e0fffc5587cd14bad5}\label{_m_c_a_l___t_i_m_e_r2_8h_a4dc24ccbf6ca29e0fffc5587cd14bad5}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!initTimer2@{initTimer2}}
+\index{initTimer2@{initTimer2}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{initTimer2()}{initTimer2()}}
+{\footnotesize\ttfamily void init\+Timer2 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{pwm\+Frequency\+Hz,  }\item[{\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\+\_\+\+PWM\+\_\+\+COM}}}]{working\+Mode }\end{DoxyParamCaption})}
+
+
+
+Initialize Timer 2 in Phase Correct PWM Mode. This function will configures all the relevant uC registers in order to initialize the timer in PC PWM mode with the desired frequency and working mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pwm\+Frequency\+Hz} & The desired PWM frequency in Hz. \\
+\hline
+{\em working\+Mode} & The working mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\+\_\+\+PWM\+\_\+\+COM}} 
+\end{DoxySeeAlso}
+\texorpdfstring{$<$}{<} Frequencies less than this are impossible to achieve\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_ae3f45e69b6e316e9a9a9e0d8b9bb8106}\label{_m_c_a_l___t_i_m_e_r2_8h_ae3f45e69b6e316e9a9a9e0d8b9bb8106}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!disableTimer2@{disableTimer2}}
+\index{disableTimer2@{disableTimer2}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{disableTimer2()}{disableTimer2()}}
+{\footnotesize\ttfamily void disable\+Timer2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables Timer 2. This function will reset all relevant uC registers in order to totally disable the timer\textquotesingle{}s operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_m_c_a_l___t_i_m_e_r2_8h_a78c14757e545944a1ad532c81990b777}\label{_m_c_a_l___t_i_m_e_r2_8h_a78c14757e545944a1ad532c81990b777}} 
+\index{MCAL\_TIMER2.h@{MCAL\_TIMER2.h}!setDutyCycleTimer2@{setDutyCycleTimer2}}
+\index{setDutyCycleTimer2@{setDutyCycleTimer2}!MCAL\_TIMER2.h@{MCAL\_TIMER2.h}}
+\doxysubsubsection{\texorpdfstring{setDutyCycleTimer2()}{setDutyCycleTimer2()}}
+{\footnotesize\ttfamily void set\+Duty\+Cycle\+Timer2 (\begin{DoxyParamCaption}\item[{float}]{duty\+Cycle }\end{DoxyParamCaption})}
+
+
+
+Set the Duty Cycle of Timer 2 This function will calculate the needed values for the OC register in order to get the desired duty cycle at the current frequency and COM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duty\+Cycle} & The desired duty cycle. Acceptable values range from 0.\+0 to 100.\+0 \\
+\hline
+\end{DoxyParams}

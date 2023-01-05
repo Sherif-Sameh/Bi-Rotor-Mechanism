@@ -1,0 +1,209 @@
+\hypertarget{_m_p_u___shared_8h}{}\doxysection{MPU\+\_\+\+Shared.\+h File Reference}
+\label{_m_p_u___shared_8h}\index{MPU\_Shared.h@{MPU\_Shared.h}}
+
+
+Shared functions and macros of the MPU6050. This file includes all the function prototypes, macros, and needed header files for the MPU\+\_\+\+Shared.\+c which has the definitions of all the functions that are needed by all the other source files of the MPU6050 library. It does not need to be included as all other files include it.  
+
+
+{\ttfamily \#include \char`\"{}driver/i2c.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_a033b5e8a30541fe4ff939a62fdb7a43d}{I2\+C\+\_\+\+MASTER\+\_\+\+SCL\+\_\+\+IO}}~CONFIG\+\_\+\+I2\+C\+\_\+\+MASTER\+\_\+\+SCL
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_af47631d568bba17edf9d1ea042602bb6}{I2\+C\+\_\+\+MASTER\+\_\+\+SDA\+\_\+\+IO}}~CONFIG\+\_\+\+I2\+C\+\_\+\+MASTER\+\_\+\+SDA
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_a4c6707a91edd24ec93eb96d6ddd741df}{I2\+C\+\_\+\+PORT\+\_\+\+NUMBER}}~I2\+C\+\_\+\+NUM\+\_\+0
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_a5c22ca4de37a83a59014e48b0a0b043d}{I2\+C\+\_\+\+MASTER\+\_\+\+FREQ\+\_\+\+HZ}}~CONFIG\+\_\+\+I2\+C\+\_\+\+MASTER\+\_\+\+FREQ\+\_\+\+HZ
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_aaa0e84f340ef5ea9db2d7624fdadaa26}{I2\+C\+\_\+\+MASTER\+\_\+\+TX\+\_\+\+BUF\+\_\+\+DISABLE}}~0
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_a37a0707200e50e3b3e9ab28b1b8d6777}{I2\+C\+\_\+\+MASTER\+\_\+\+RX\+\_\+\+BUF\+\_\+\+DISABLE}}~0
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_a7ebc0bc57afc33bd33967be8479690db}{I2\+C\+\_\+\+MASTER\+\_\+\+TIMEOUT\+\_\+\+MS}}~20
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_ac2eea8445f1233dbbea456f577d5181c}{I2\+C\+\_\+\+MASTER\+\_\+\+ACK\+\_\+\+EN}}~true
+\item 
+\#define \mbox{\hyperlink{_m_p_u___shared_8h_a6a26d06d2f863deedd849612a6c2a4e4}{MPU6050\+\_\+\+ADDRESS}}~0x34
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_m_p_u___shared_8h_ac215bb57574143617b6ab4a3c040060e}{set\+AD0}} (uint8\+\_\+t pin\+Value)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___shared_8h_af49584516d8300210c07a8951f4d1ece}{write\+To\+Reg}} (uint8\+\_\+t reg\+Addr, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em This function writes a byte into a register on the MPU6050. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___shared_8h_ad17e8be8811eb352e99b8fd7d91a8c3d}{read\+From\+Reg}} (uint8\+\_\+t reg\+Addr, uint8\+\_\+t $\ast$data, uint8\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em This function will read from a register/s on the MPU6050. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___shared_8h_a0d42b35f9a0cf9c2fba2a8430968c080}{read\+Interrupt\+Status}} (uint8\+\_\+t $\ast$value)
+\begin{DoxyCompactList}\small\item\em Reads the value of the interrupt status register. This function reads the status of all 3 possible interrupt sources (FIFO OVF, I2C Master INT, Data RDY INT) on the MPU6050 to determine the source which triggered the interrupt. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___shared_8h_a7a47c7a475c11852da1f360ce3052159}{disable\+Interrupts}} ()
+\begin{DoxyCompactList}\small\item\em function disables the all interrupts on the MPU6050. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Shared functions and macros of the MPU6050. This file includes all the function prototypes, macros, and needed header files for the MPU\+\_\+\+Shared.\+c which has the definitions of all the functions that are needed by all the other source files of the MPU6050 library. It does not need to be included as all other files include it. 
+
+\begin{DoxyAuthor}{Author}
+Sherif Sameh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/14
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_m_p_u___shared_8h_a033b5e8a30541fe4ff939a62fdb7a43d}\label{_m_p_u___shared_8h_a033b5e8a30541fe4ff939a62fdb7a43d}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_SCL\_IO@{I2C\_MASTER\_SCL\_IO}}
+\index{I2C\_MASTER\_SCL\_IO@{I2C\_MASTER\_SCL\_IO}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_SCL\_IO}{I2C\_MASTER\_SCL\_IO}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+SCL\+\_\+\+IO~CONFIG\+\_\+\+I2\+C\+\_\+\+MASTER\+\_\+\+SCL}
+
+The GPIO pin assigned on the ESP32 to SCL (I2C master clock line). Set from inside the menuconfig. \mbox{\Hypertarget{_m_p_u___shared_8h_af47631d568bba17edf9d1ea042602bb6}\label{_m_p_u___shared_8h_af47631d568bba17edf9d1ea042602bb6}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_SDA\_IO@{I2C\_MASTER\_SDA\_IO}}
+\index{I2C\_MASTER\_SDA\_IO@{I2C\_MASTER\_SDA\_IO}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_SDA\_IO}{I2C\_MASTER\_SDA\_IO}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+SDA\+\_\+\+IO~CONFIG\+\_\+\+I2\+C\+\_\+\+MASTER\+\_\+\+SDA}
+
+The GPIO pin assigned on the ESP32 to SDA (I2C master data line). Set from inside the menuconfig. \mbox{\Hypertarget{_m_p_u___shared_8h_a4c6707a91edd24ec93eb96d6ddd741df}\label{_m_p_u___shared_8h_a4c6707a91edd24ec93eb96d6ddd741df}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_PORT\_NUMBER@{I2C\_PORT\_NUMBER}}
+\index{I2C\_PORT\_NUMBER@{I2C\_PORT\_NUMBER}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_PORT\_NUMBER}{I2C\_PORT\_NUMBER}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+PORT\+\_\+\+NUMBER~I2\+C\+\_\+\+NUM\+\_\+0}
+
+Defines which I2C port is used on the ESP32 of the available two ports number 0 and 1. \mbox{\Hypertarget{_m_p_u___shared_8h_a5c22ca4de37a83a59014e48b0a0b043d}\label{_m_p_u___shared_8h_a5c22ca4de37a83a59014e48b0a0b043d}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_FREQ\_HZ@{I2C\_MASTER\_FREQ\_HZ}}
+\index{I2C\_MASTER\_FREQ\_HZ@{I2C\_MASTER\_FREQ\_HZ}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_FREQ\_HZ}{I2C\_MASTER\_FREQ\_HZ}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+FREQ\+\_\+\+HZ~CONFIG\+\_\+\+I2\+C\+\_\+\+MASTER\+\_\+\+FREQ\+\_\+\+HZ}
+
+The clock frequency used for SCL in Hz. Set from inside the menuconfig. \mbox{\Hypertarget{_m_p_u___shared_8h_aaa0e84f340ef5ea9db2d7624fdadaa26}\label{_m_p_u___shared_8h_aaa0e84f340ef5ea9db2d7624fdadaa26}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_TX\_BUF\_DISABLE@{I2C\_MASTER\_TX\_BUF\_DISABLE}}
+\index{I2C\_MASTER\_TX\_BUF\_DISABLE@{I2C\_MASTER\_TX\_BUF\_DISABLE}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_TX\_BUF\_DISABLE}{I2C\_MASTER\_TX\_BUF\_DISABLE}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+TX\+\_\+\+BUF\+\_\+\+DISABLE~0}
+
+A macro used to define the software buffer allocated for transmitting data in I2C slave mode, hence equals 0. \mbox{\Hypertarget{_m_p_u___shared_8h_a37a0707200e50e3b3e9ab28b1b8d6777}\label{_m_p_u___shared_8h_a37a0707200e50e3b3e9ab28b1b8d6777}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_RX\_BUF\_DISABLE@{I2C\_MASTER\_RX\_BUF\_DISABLE}}
+\index{I2C\_MASTER\_RX\_BUF\_DISABLE@{I2C\_MASTER\_RX\_BUF\_DISABLE}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_RX\_BUF\_DISABLE}{I2C\_MASTER\_RX\_BUF\_DISABLE}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+RX\+\_\+\+BUF\+\_\+\+DISABLE~0}
+
+A macro used to define the software buffer allocated for receiving data in I2C slave mode, hence equals 0. \mbox{\Hypertarget{_m_p_u___shared_8h_a7ebc0bc57afc33bd33967be8479690db}\label{_m_p_u___shared_8h_a7ebc0bc57afc33bd33967be8479690db}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_TIMEOUT\_MS@{I2C\_MASTER\_TIMEOUT\_MS}}
+\index{I2C\_MASTER\_TIMEOUT\_MS@{I2C\_MASTER\_TIMEOUT\_MS}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_TIMEOUT\_MS}{I2C\_MASTER\_TIMEOUT\_MS}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+TIMEOUT\+\_\+\+MS~20}
+
+The max amount of time, in ms, that the master will wait for a response from the slave before declaring a timeout. \mbox{\Hypertarget{_m_p_u___shared_8h_ac2eea8445f1233dbbea456f577d5181c}\label{_m_p_u___shared_8h_ac2eea8445f1233dbbea456f577d5181c}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!I2C\_MASTER\_ACK\_EN@{I2C\_MASTER\_ACK\_EN}}
+\index{I2C\_MASTER\_ACK\_EN@{I2C\_MASTER\_ACK\_EN}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_MASTER\_ACK\_EN}{I2C\_MASTER\_ACK\_EN}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+MASTER\+\_\+\+ACK\+\_\+\+EN~true}
+
+A macro which defines whether the I2C master should expect an acknowledge from the slave or not. \mbox{\Hypertarget{_m_p_u___shared_8h_a6a26d06d2f863deedd849612a6c2a4e4}\label{_m_p_u___shared_8h_a6a26d06d2f863deedd849612a6c2a4e4}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!MPU6050\_ADDRESS@{MPU6050\_ADDRESS}}
+\index{MPU6050\_ADDRESS@{MPU6050\_ADDRESS}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{MPU6050\_ADDRESS}{MPU6050\_ADDRESS}}
+{\footnotesize\ttfamily \#define MPU6050\+\_\+\+ADDRESS~0x34}
+
+The 6 bit I2C address of the MPU6050 which excludes AD0. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_p_u___shared_8h_ac215bb57574143617b6ab4a3c040060e}\label{_m_p_u___shared_8h_ac215bb57574143617b6ab4a3c040060e}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!setAD0@{setAD0}}
+\index{setAD0@{setAD0}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{setAD0()}{setAD0()}}
+{\footnotesize\ttfamily void set\+AD0 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pin\+Value }\end{DoxyParamCaption})}
+
+This function sets the value used for the AD0 bit in the MPU6050\textquotesingle{}s I2C 7 bit address and its value should match that of the pin i.\+e. 1 (High) or 0 (Low). 
+\begin{DoxyParams}{Parameters}
+{\em pin\+Value} & The value of the AD0 pin on the MPU6050 IC. Note\+: all values other than 0 will be taken as 1. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_m_p_u___shared_8h_af49584516d8300210c07a8951f4d1ece}\label{_m_p_u___shared_8h_af49584516d8300210c07a8951f4d1ece}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!writeToReg@{writeToReg}}
+\index{writeToReg@{writeToReg}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{writeToReg()}{writeToReg()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t write\+To\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Addr,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+This function writes a byte into a register on the MPU6050. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Addr} & The address of the register in the MPU6050\textquotesingle{}s register map. \\
+\hline
+{\em data} & The value that will be written to that register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This function is used internally by the driver and not for applications to use. 
+\end{DoxyAttention}
+\mbox{\Hypertarget{_m_p_u___shared_8h_ad17e8be8811eb352e99b8fd7d91a8c3d}\label{_m_p_u___shared_8h_ad17e8be8811eb352e99b8fd7d91a8c3d}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!readFromReg@{readFromReg}}
+\index{readFromReg@{readFromReg}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{readFromReg()}{readFromReg()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t read\+From\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Addr,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+
+
+This function will read from a register/s on the MPU6050. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Addr} & The address of the first register to read from in the MPU6050\textquotesingle{}s register map. \\
+\hline
+{\em data} & A pointer to the start of an array of bytes that the read data will be written to. \\
+\hline
+{\em n} & The number of registers to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This function is used internally by the driver and not for applications to use. 
+\end{DoxyAttention}
+\mbox{\Hypertarget{_m_p_u___shared_8h_a0d42b35f9a0cf9c2fba2a8430968c080}\label{_m_p_u___shared_8h_a0d42b35f9a0cf9c2fba2a8430968c080}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!readInterruptStatus@{readInterruptStatus}}
+\index{readInterruptStatus@{readInterruptStatus}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{readInterruptStatus()}{readInterruptStatus()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t read\+Interrupt\+Status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Reads the value of the interrupt status register. This function reads the status of all 3 possible interrupt sources (FIFO OVF, I2C Master INT, Data RDY INT) on the MPU6050 to determine the source which triggered the interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & pointer to char that will hold the read value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___shared_8h_a7a47c7a475c11852da1f360ce3052159}\label{_m_p_u___shared_8h_a7a47c7a475c11852da1f360ce3052159}} 
+\index{MPU\_Shared.h@{MPU\_Shared.h}!disableInterrupts@{disableInterrupts}}
+\index{disableInterrupts@{disableInterrupts}!MPU\_Shared.h@{MPU\_Shared.h}}
+\doxysubsubsection{\texorpdfstring{disableInterrupts()}{disableInterrupts()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t disable\+Interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function disables the all interrupts on the MPU6050. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}

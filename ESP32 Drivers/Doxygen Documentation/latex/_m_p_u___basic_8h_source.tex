@@ -1,0 +1,75 @@
+\hypertarget{_m_p_u___basic_8h_source}{}\doxysection{MPU\+\_\+\+Basic.\+h}
+\mbox{\hyperlink{_m_p_u___basic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#ifndef BASIC\_H}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define BASIC\_H}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_m_p_u___shared_8h}{MPU\_Shared.h}}"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/* Sumbolic Constants */}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ACCELEROMETER\_X\_BIAS\_FACTOR                 ((float) 259.5)}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ACCELEROMETER\_Y\_BIAS\_FACTOR                 ((float) 86.2)}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define ACCELEROMETER\_Z\_BIAS\_FACTOR                 ((float) -\/1825.2)}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR        ((float) 0.9493)}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR        ((float) 1.0307)}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR        ((float) 0.9842)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define GYRO\_X\_BIAS\_FACTOR                          ((float) -\/306.7)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define GYRO\_Y\_BIAS\_FACTOR                          ((float) 65.43)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define GYRO\_Z\_BIAS\_FACTOR                          ((float) -\/15.2)}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{76 \textcolor{comment}{/* Function-\/like Macros */}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define ACCELEROMETER\_APPLY\_CALIBRATION(RAW,BIAS\_FACTOR,CORRECTION\_FACTOR) \(\backslash\)}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{                        (CORRECTION\_FACTOR * ((float) RAW -\/ BIAS\_FACTOR))}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define GYRO\_APPLY\_CALIBRATION(RAW,BIAS\_FACTOR) \(\backslash\)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{                        ((float) RAW -\/ BIAS\_FACTOR)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define ACCELEROMETER\_CONVERT\_SF\_SI(SF)             (SF / 9.81)}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define GYRO\_CONVERT\_SF\_SI(SF)                      ((SF * 180) / 3.1416)}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{112 \textcolor{comment}{/* Enum Definitions */}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{118 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{119     \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22acc99d753531a3d511b8d596a1d23546a}{ACCELEROMETER\_FS\_RANGE\_2G}},      }
+\DoxyCodeLine{120     \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a23fd24e025acb1a626a65ec59e4afe77}{ACCELEROMETER\_FS\_RANGE\_4G}},      }
+\DoxyCodeLine{121     \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a12e7d5fc7185000d50b76800c270e570}{ACCELEROMETER\_FS\_RANGE\_8G}},      }
+\DoxyCodeLine{122     \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a11c4d5b35c88e6372ffac541bc3cb304}{ACCELEROMETER\_FS\_RANGE\_16G}}      }
+\DoxyCodeLine{123 \} \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\_FS\_range}};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{129 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{130     \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a66de62e0a2d2f8a4e598116a90b22eb3}{GYRO\_FS\_RANGE\_250DPS}},           }
+\DoxyCodeLine{131     \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355ad466515e99519b9b7b10055aa613f583}{GYRO\_FS\_RANGE\_500DPS}},           }
+\DoxyCodeLine{132     \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a1d233836f64a4222024ac7f44f92690f}{GYRO\_FS\_RANGE\_1000DPS}},          }
+\DoxyCodeLine{133     \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a7b91746919e8e06d22d3ca45f0f7648e}{GYRO\_FS\_RANGE\_2000DPS}}           }
+\DoxyCodeLine{134 \} \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\_FS\_range}};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{144 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_ad6da956da7edc9fd38e6ed801d2daf9f}{mpuInit}}(uint8\_t AD0);}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{152 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a33a6662104d96d140233039d1799f3bc}{wakeUp}}();}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{158 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_ab7bc838f54ad1ab9753141e76ca911dc}{deviceReset}}();}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{167 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a5ca1a05833c359bd8385789ceeb071c6}{setAccFS\_Range}}(\mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\_FS\_range}} FS\_SELECT);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{176 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_ae4833a99235bfa2e3c7e08c81386c7e2}{setGyroFS\_Range}}(\mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\_FS\_range}} FS\_SELECT);}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{185 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_ac8d8a4c2f8e300dce7f4f6976bc9fa3d}{getAccReadings}}(int16\_t *data, uint8\_t skipFromBeginning, uint8\_t skipFromEnd);}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{194 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a7131f51e3e09c742e7b1c1143c83029b}{getAccReadingsCalibrated}}(\textcolor{keywordtype}{float} *data);}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{203 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a65b2e6cf4a67a3c26cb61d720abfd0f8}{getAccReadingsScaled}}(\textcolor{keywordtype}{float} *data);}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{212 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a4e012976a981b7e36f191ebb89d8bcc0}{getAccReadingsScaledSI}}(\textcolor{keywordtype}{float} *data);}
+\DoxyCodeLine{213  }
+\DoxyCodeLine{221 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a67385440be28a185683b252a4831b4e5}{getGyroReadings}}(int16\_t *data, uint8\_t skipFromBeginning, uint8\_t skipFromEnd);}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{230 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a47bf99360546e00ab0e09dae8b18855b}{getGyroReadingsCalibrated}}(\textcolor{keywordtype}{float} *data);}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{239 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a8a0b3f887cf190696d4d4237d0b9ac07}{getGyroReadingsScaled}}(\textcolor{keywordtype}{float} *data);}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{248 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_a6396dc17af009d0155c1a9b560d52b1f}{getGyroReadingsScaledSI}}(\textcolor{keywordtype}{float} *data);}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{255 esp\_err\_t \mbox{\hyperlink{_m_p_u___basic_8h_aef065a09505e32981a014dfba7d28a3d}{getTempReadings}}(int16\_t *data);}
+\DoxyCodeLine{256  }
+\DoxyCodeLine{257 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

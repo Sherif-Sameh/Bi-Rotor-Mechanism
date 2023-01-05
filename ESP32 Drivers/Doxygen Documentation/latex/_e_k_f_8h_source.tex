@@ -1,0 +1,88 @@
+\hypertarget{_e_k_f_8h_source}{}\doxysection{EKF.\+h}
+\mbox{\hyperlink{_e_k_f_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifndef ExtendedKalmanFilter}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ExtendedKalmanFilter}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_m_p_u___basic_8h}{MPU\_Basic.h}}"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_m_p_u___advanced_8h}{MPU\_Advanced.h}}"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}Functions.h"{}}                         \textcolor{comment}{/* The CControl Library is a lightweight library that supports many}}
+\DoxyCodeLine{26 \textcolor{comment}{                                                linear algebra matrix operations as well as some control system features}}
+\DoxyCodeLine{27 \textcolor{comment}{                                                and is used in this project mainly to have a C implmentation of matrix }}
+\DoxyCodeLine{28 \textcolor{comment}{                                                operations that can run easily on a uC with limited H/W resources. */}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{/* Symbolic Constants */}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define EKF\_SAMPLING\_TIME\_MS        CONFIG\_EKF\_SAMPLING\_TIME\_MS}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define EKF\_NUM\_OF\_STATES           CONFIG\_EKF\_NUM\_OF\_STATES}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define EKF\_NUM\_OF\_OBSERVATIONS     CONFIG\_EKF\_NUM\_OF\_OBSERVATIONS}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define EKF\_NUM\_OF\_FLAGS            7}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{61 \textcolor{comment}{/* Typedefs */}}
+\DoxyCodeLine{62 \textcolor{keyword}{typedef} void (\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{nonLinearFunc}})(\textcolor{keyword}{const} \textcolor{keywordtype}{float} *, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *, \textcolor{keywordtype}{float} *);   }
+\DoxyCodeLine{63 \textcolor{keyword}{typedef} void (\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{nonLinearFunc2}})(\textcolor{keyword}{const} \textcolor{keywordtype}{float} *, \textcolor{keywordtype}{float} *);                 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{68  */}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{73  */}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{/* Enum defintions */}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{82 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{83     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3a2ca442f2cca86358367347622aa166}{EKF\_INIT\_SUCCESS}},               }
+\DoxyCodeLine{84     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab624c58dcfa4c006dcb8f5abdbffb1c2}{EKF\_STF\_NOT\_DEFINED}},            }
+\DoxyCodeLine{85     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab93192d2ccd0f80698cdfe179d491790}{EKF\_MF\_NOT\_DEFINED}},             }
+\DoxyCodeLine{86     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa7c2de55a626f12d32149726010616f96}{EKF\_STF\_JACOB\_NOT\_DEFINED}},      }
+\DoxyCodeLine{87     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aac35270f9f415d209b916cc96e6dfbebd}{EKF\_MF\_JACOB\_NOT\_DEFINED}},       }
+\DoxyCodeLine{88     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa1098f413c7aa435085d4a262d4ace109}{EKF\_PN\_COV\_NOT\_DEFINED}},         }
+\DoxyCodeLine{89     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3ead9aa999be2e585dd1075ab18abbbc}{EKF\_MN\_COV\_NOT\_DEFINED}},         }
+\DoxyCodeLine{90     \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3dbfcfe45270a20d2ebb7fa90018f440}{EKF\_INIT\_NOT\_CALLED}}             }
+\DoxyCodeLine{91 \} \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{/* Function Declarations */}}
+\DoxyCodeLine{102 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_abba38de7981192b54d9f7abc4be982d8}{setStateTransitionFunction}}(\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{nonLinearFunc}} *STF);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{108 \mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{nonLinearFunc}} *\mbox{\hyperlink{_e_k_f_8h_a2e1d2bbf665e4e823c6203e722e62e4e}{getStateTransitionFunction}}();}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{115 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_a102099b600c4e3b9fae3c87d2a50b2bf}{setMeasurementFunction}}(\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{nonLinearFunc2}} *MF);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{121 \mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{nonLinearFunc2}} *\mbox{\hyperlink{_e_k_f_8h_ac697b2aa6c598bfb09f63f6ed74072df}{getMeasurementFunction}}();}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{128 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_ae6641653b21cd3a246097c05a3878f8a}{setStateTransitionFunctionJacob}}(\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{nonLinearFunc}} *STF\_Jacob);}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{135 \mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{nonLinearFunc}} *\mbox{\hyperlink{_e_k_f_8h_a9aac8c94f7d15e8b19d99b3948c068f8}{getStateTransitionFunctionJacob}}();}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{142 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_ac32a3967c9206939197b1453744b58ce}{setMeasurementFunctionJacob}}(\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{nonLinearFunc2}} *MF\_Jacob);}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{149 \mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{nonLinearFunc2}} *\mbox{\hyperlink{_e_k_f_8h_a03f2aaac9c041dfc85ab3d209d60c962}{getMeasurementFunctionJacob}}();}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{157 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_a30dfc0b28f7d8d1ec13f2b370ef9435d}{setProcessNoiseCov}}(\textcolor{keywordtype}{float} *PNCov);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{163 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_a3f5d2b7721883360e39db904d467ca5f}{getProcessNoiseCov}}(\textcolor{keywordtype}{float} *PNCov);}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{171 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_a29fb84ce5a81b649664345e66b32fcd5}{setMeasurementNoiseCov}}(\textcolor{keywordtype}{float} *MNCov);}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{177 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_a07561e8046e1e00d68d589c933859f7f}{getMeasurementNoiseCov}}(\textcolor{keywordtype}{float} *MNCov);}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{186 \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\_STATUS\_t}} \mbox{\hyperlink{_e_k_f_8h_a9f564093037b528e8109e11b0af26f90}{setInitialValues}}(\textcolor{keywordtype}{float} *initialStateVector, \textcolor{keywordtype}{float} *initialErrorCov);}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 }
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#ifdef CONFIG\_EKF\_RETURN\_STF\_RESULTS}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{198 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_a9ed6ff2240901e726b75264ca705a903}{kalmanPredictionStep}}(\textcolor{keywordtype}{float} *gyroReadings, \textcolor{keywordtype}{float} *g\_k);}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{207 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_a48faa3d86f521fd4b3130069df43b49d}{getUpdatedStateEstimate}}(\textcolor{keywordtype}{float} *updatedStateVector, \textcolor{keywordtype}{float} *STF\_Result);}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{214 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_a9ed6ff2240901e726b75264ca705a903}{kalmanPredictionStep}}(\textcolor{keywordtype}{float} *gyroReadings);}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{221 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_a48faa3d86f521fd4b3130069df43b49d}{getUpdatedStateEstimate}}(\textcolor{keywordtype}{float} *updatedStateVector);}
+\DoxyCodeLine{222 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{228 \textcolor{keywordtype}{void} \mbox{\hyperlink{_e_k_f_8h_ae39408732bb3a3b6a04a62f7cc96b089}{kalmanCorrectionStep}}(\textcolor{keywordtype}{float} *accReadings);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

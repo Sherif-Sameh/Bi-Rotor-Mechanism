@@ -1,0 +1,207 @@
+\hypertarget{class_l_p_c}{}\doxysection{LPC Class Reference}
+\label{class_l_p_c}\index{LPC@{LPC}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_l_p_c_a0a5c0bb60544f6f272443b136ab103c3}{LPC}} (uint8\+\_\+t spi\+\_\+port\+\_\+num, uint32\+\_\+t clkf, uint8\+\_\+t spi\+\_\+mode, char first\+\_\+bit\+\_\+transfered)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_l_p_c}{LPC}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_p_c_a3316d63319661e03a9d10a2d0e76aba1}{send\+\_\+\+ACK}} ()
+\begin{DoxyCompactList}\small\item\em This is a funciton to send an ACK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_p_c_ada08e6697abe857a436d9df5d0fee3b9}{send\+\_\+\+NACK}} ()
+\begin{DoxyCompactList}\small\item\em This is a function to send a NACK. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_l_p_c_aa6e9e80eea10e6fd0b695bb498d3ef4b}{set\+\_\+mode}} (uint8\+\_\+t mode\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Set the mode of operation of the slave device. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_l_p_c_a698c38e0acef2fa4ba5cb1c0a7bd90aa}{send\+\_\+reference}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em A method that would send the pitch and elevation reference. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_l_p_c_a5b2a83277df1fc71f8e0c86aee799775}{end\+\_\+transaction}} ()
+\begin{DoxyCompactList}\small\item\em waits the ACK from the slave and replies with a NACK signaling the successful end of a communication. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_l_p_c_a2d3f5b35266043add6e11a01957247a5}{Send\+\_\+message}} (float $\ast$data, uint8\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em This is the function that will send the message over the \mbox{\hyperlink{class_l_p_c}{LPC}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_l_p_c_af08ad156dee78908f79917f243a57e32}{send\+\_\+pitch}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em A method that would send the pitch data to the slave. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_l_p_c_ae7dee9ce416c8c371be95ed9d824a783}{send\+\_\+elevation}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em A method that would send the elevation data to the slave. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_p_c_ae1a6095c130667c9230a1528987c62be}{set\+\_\+\+MSG\+\_\+data}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em A method to convert the input float data into an array of bytes inside the \mbox{\hyperlink{class_l_p_c}{LPC}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_l_p_c_a0a5c0bb60544f6f272443b136ab103c3}\label{class_l_p_c_a0a5c0bb60544f6f272443b136ab103c3}} 
+\index{LPC@{LPC}!LPC@{LPC}}
+\index{LPC@{LPC}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{LPC()}{LPC()}}
+{\footnotesize\ttfamily LPC\+::\+LPC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{spi\+\_\+port\+\_\+num,  }\item[{uint32\+\_\+t}]{clkf,  }\item[{uint8\+\_\+t}]{spi\+\_\+mode,  }\item[{char}]{first\+\_\+bit\+\_\+transfered }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_l_p_c}{LPC}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi\+\_\+port\+\_\+num} & This defines the SPI module we want to us HSPI, or VSPI. For HSPI, define this as 2, and for VSPI, define it as 3. \\
+\hline
+{\em clkf} & This is the SPI master\textquotesingle{}s CLK frequency \\
+\hline
+{\em spi\+\_\+mode} & This is the mode of SPI transaction mode0 -\/-\/\texorpdfstring{$>$}{>}0 mode1 -\/-\/\texorpdfstring{$>$}{>}1 mode2 -\/-\/\texorpdfstring{$>$}{>}2 mode3 -\/-\/\texorpdfstring{$>$}{>}3 \\
+\hline
+{\em first\+\_\+bit\+\_\+transfered} & This is the order of bit transferal. \textquotesingle{}L\textquotesingle{} for LSB first and \textquotesingle{}M\textquotesingle{} for MSB first. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_l_p_c_a3316d63319661e03a9d10a2d0e76aba1}\label{class_l_p_c_a3316d63319661e03a9d10a2d0e76aba1}} 
+\index{LPC@{LPC}!send\_ACK@{send\_ACK}}
+\index{send\_ACK@{send\_ACK}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{send\_ACK()}{send\_ACK()}}
+{\footnotesize\ttfamily void LPC\+::send\+\_\+\+ACK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is a funciton to send an ACK. 
+
+\mbox{\Hypertarget{class_l_p_c_ada08e6697abe857a436d9df5d0fee3b9}\label{class_l_p_c_ada08e6697abe857a436d9df5d0fee3b9}} 
+\index{LPC@{LPC}!send\_NACK@{send\_NACK}}
+\index{send\_NACK@{send\_NACK}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{send\_NACK()}{send\_NACK()}}
+{\footnotesize\ttfamily void LPC\+::send\+\_\+\+NACK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is a function to send a NACK. 
+
+\mbox{\Hypertarget{class_l_p_c_aa6e9e80eea10e6fd0b695bb498d3ef4b}\label{class_l_p_c_aa6e9e80eea10e6fd0b695bb498d3ef4b}} 
+\index{LPC@{LPC}!set\_mode@{set\_mode}}
+\index{set\_mode@{set\_mode}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{set\_mode()}{set\_mode()}}
+{\footnotesize\ttfamily bool LPC\+::set\+\_\+mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Set the mode of operation of the slave device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode\+\_\+num} & This is the mode number. We have 2 modes so this could be 0-\/-\/\texorpdfstring{$>$}{>} mode 0 1-\/-\/\texorpdfstring{$>$}{>} mode 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true incase of successful transaction. 
+
+false incase of failed transaction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_p_c_a698c38e0acef2fa4ba5cb1c0a7bd90aa}\label{class_l_p_c_a698c38e0acef2fa4ba5cb1c0a7bd90aa}} 
+\index{LPC@{LPC}!send\_reference@{send\_reference}}
+\index{send\_reference@{send\_reference}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{send\_reference()}{send\_reference()}}
+{\footnotesize\ttfamily bool LPC\+::send\+\_\+reference (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+A method that would send the pitch and elevation reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & This is a pointer to an array that contians the data of the reference. The first dataset for the elevation, while the other is for the pitch. The data should be of type float. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true incase of successful transaction. 
+
+false incase of failed transaction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_p_c_a5b2a83277df1fc71f8e0c86aee799775}\label{class_l_p_c_a5b2a83277df1fc71f8e0c86aee799775}} 
+\index{LPC@{LPC}!end\_transaction@{end\_transaction}}
+\index{end\_transaction@{end\_transaction}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{end\_transaction()}{end\_transaction()}}
+{\footnotesize\ttfamily bool LPC\+::end\+\_\+transaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+waits the ACK from the slave and replies with a NACK signaling the successful end of a communication. 
+
+\begin{DoxyReturn}{Returns}
+bool signifying the message was sent received or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_p_c_a2d3f5b35266043add6e11a01957247a5}\label{class_l_p_c_a2d3f5b35266043add6e11a01957247a5}} 
+\index{LPC@{LPC}!Send\_message@{Send\_message}}
+\index{Send\_message@{Send\_message}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{Send\_message()}{Send\_message()}}
+{\footnotesize\ttfamily bool LPC\+::\+Send\+\_\+message (\begin{DoxyParamCaption}\item[{float $\ast$}]{data,  }\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+This is the function that will send the message over the \mbox{\hyperlink{class_l_p_c}{LPC}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & This is the data that we want to send. Data should be of Type float. \\
+\hline
+{\em id} & This is the id of the message we want to send over \mbox{\hyperlink{class_l_p_c}{LPC}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true incase of successful transaction. 
+
+false incase of failed transaction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_p_c_af08ad156dee78908f79917f243a57e32}\label{class_l_p_c_af08ad156dee78908f79917f243a57e32}} 
+\index{LPC@{LPC}!send\_pitch@{send\_pitch}}
+\index{send\_pitch@{send\_pitch}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{send\_pitch()}{send\_pitch()}}
+{\footnotesize\ttfamily bool LPC\+::send\+\_\+pitch (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+A method that would send the pitch data to the slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & This is a pointer to an array that contians the data of the pitch. The data should be of type float. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true incase of successful transaction. 
+
+false incase of failed transaction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_p_c_ae7dee9ce416c8c371be95ed9d824a783}\label{class_l_p_c_ae7dee9ce416c8c371be95ed9d824a783}} 
+\index{LPC@{LPC}!send\_elevation@{send\_elevation}}
+\index{send\_elevation@{send\_elevation}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{send\_elevation()}{send\_elevation()}}
+{\footnotesize\ttfamily bool LPC\+::send\+\_\+elevation (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+A method that would send the elevation data to the slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & This is a pointer to an array that contians the data of the elevation. The data should be of type float. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true incase of successful transaction. 
+
+false incase of failed transaction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_p_c_ae1a6095c130667c9230a1528987c62be}\label{class_l_p_c_ae1a6095c130667c9230a1528987c62be}} 
+\index{LPC@{LPC}!set\_MSG\_data@{set\_MSG\_data}}
+\index{set\_MSG\_data@{set\_MSG\_data}!LPC@{LPC}}
+\doxysubsubsection{\texorpdfstring{set\_MSG\_data()}{set\_MSG\_data()}}
+{\footnotesize\ttfamily void LPC\+::set\+\_\+\+MSG\+\_\+data (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+A method to convert the input float data into an array of bytes inside the \mbox{\hyperlink{class_l_p_c}{LPC}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The pointer to the array of floats that we are enterring. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_l_p_c_8h}{LPC.\+h}}\end{DoxyCompactItemize}

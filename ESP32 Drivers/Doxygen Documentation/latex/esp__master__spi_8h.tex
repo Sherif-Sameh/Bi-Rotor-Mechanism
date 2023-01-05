@@ -1,0 +1,167 @@
+\hypertarget{esp__master__spi_8h}{}\doxysection{esp\+\_\+master\+\_\+spi.\+h File Reference}
+\label{esp__master__spi_8h}\index{esp\_master\_spi.h@{esp\_master\_spi.h}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}SPI.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+SPIClass $\ast$ \mbox{\hyperlink{esp__master__spi_8h_a8a702b5acb140f89c75096dcfdd0d30c}{initialize\+\_\+spi}} (uint8\+\_\+t spi\+\_\+num)
+\begin{DoxyCompactList}\small\item\em This is a method that would initialize the spi itself. We could select the SPI to be VSPI or HSPI. Make sure propper pins are used for each SPI perepheral used. \end{DoxyCompactList}\item 
+SPISettings \mbox{\hyperlink{esp__master__spi_8h_afab3158fbdf25232129482cc923063e1}{set\+\_\+spi\+\_\+settings}} (uint32\+\_\+t clkf, uint8\+\_\+t spi\+\_\+mode, char first\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em Set the spi transfer settings. This is used when we want to use the same SPI transfer settings everytime we initiate an SPI transfer command. Instead of having to define the transfer settings everytime, we could define it once and pass this object as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{esp__master__spi_8h_ade54bfd9b976272117c38e9fce788ac3}{spi\+\_\+send}} (SPIClass $\ast$spi, uint8\+\_\+t data, uint32\+\_\+t clkf, uint8\+\_\+t spi\+\_\+mode, char first\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em This is a funciton that will allow us to Send data over SPI with transfer conditions defined only once for this specific trnasfer operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{esp__master__spi_8h_ac24a6980b5aa1a0cb1fe6804887416e9}{spi\+\_\+send}} (SPIClass $\ast$spi, uint8\+\_\+t data, SPISettings mysettings)
+\begin{DoxyCompactList}\small\item\em Allows us to transfer data through SPI without having to define the transfer settings everytime, we can simply just pass an SPISettings object containing all the settings we want for the transferal. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{esp__master__spi_8h_a3c3607d99fdcb612780a8ad5e7649538}{spi\+\_\+receive}} (SPIClass $\ast$spi, uint32\+\_\+t clkf, uint8\+\_\+t spi\+\_\+mode, char first\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em This is a function that would allow us to receive a byte from the slave while allowing us to set the SPI settings for that particular transaction. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{esp__master__spi_8h_a883a2a59fa8ef563200f300b523f4f47}{spi\+\_\+receive}} (SPIClass $\ast$spi, SPISettings mysettings)
+\begin{DoxyCompactList}\small\item\em This is a function that would allow us to receive a byte from the slave using a preset SPI setting object defined in a SPISettings object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ziad Alwareh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/01-\/03
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{esp__master__spi_8h_a8a702b5acb140f89c75096dcfdd0d30c}\label{esp__master__spi_8h_a8a702b5acb140f89c75096dcfdd0d30c}} 
+\index{esp\_master\_spi.h@{esp\_master\_spi.h}!initialize\_spi@{initialize\_spi}}
+\index{initialize\_spi@{initialize\_spi}!esp\_master\_spi.h@{esp\_master\_spi.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_spi()}{initialize\_spi()}}
+{\footnotesize\ttfamily SPIClass $\ast$ initialize\+\_\+spi (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{spi\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+This is a method that would initialize the spi itself. We could select the SPI to be VSPI or HSPI. Make sure propper pins are used for each SPI perepheral used. 
+
+For HSPI MOSI -\/-\/\texorpdfstring{$>$}{>} 13 MISO -\/-\/\texorpdfstring{$>$}{>} 12 SS -\/-\/\texorpdfstring{$>$}{>} 15 SCLK -\/-\/\texorpdfstring{$>$}{>} 14
+
+For VSPI MOSI -\/-\/\texorpdfstring{$>$}{>} 23 MISO -\/-\/\texorpdfstring{$>$}{>} 19 SS -\/-\/\texorpdfstring{$>$}{>} 5 SCLK -\/-\/\texorpdfstring{$>$}{>} 18
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi\+\_\+num} & This should be either 2 or 3. 2 is for SPI2 (HSPI) and 3 is for SPI3 (VSPI) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+SPIClass$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{esp__master__spi_8h_afab3158fbdf25232129482cc923063e1}\label{esp__master__spi_8h_afab3158fbdf25232129482cc923063e1}} 
+\index{esp\_master\_spi.h@{esp\_master\_spi.h}!set\_spi\_settings@{set\_spi\_settings}}
+\index{set\_spi\_settings@{set\_spi\_settings}!esp\_master\_spi.h@{esp\_master\_spi.h}}
+\doxysubsubsection{\texorpdfstring{set\_spi\_settings()}{set\_spi\_settings()}}
+{\footnotesize\ttfamily SPISettings set\+\_\+spi\+\_\+settings (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{clkf,  }\item[{uint8\+\_\+t}]{spi\+\_\+mode,  }\item[{char}]{first\+\_\+bit }\end{DoxyParamCaption})}
+
+
+
+Set the spi transfer settings. This is used when we want to use the same SPI transfer settings everytime we initiate an SPI transfer command. Instead of having to define the transfer settings everytime, we could define it once and pass this object as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clkf} & This is the SCLK frequency we want to set for the SPI \\
+\hline
+{\em spi\+\_\+mode} & This is the mode of transfer. Could be input as 0,1,2,3. Each mode refers to the clock polarity as well as the phase. For mode details check ATmega328p doccumentation for SPI data modes. \\
+\hline
+{\em first\+\_\+bit} & This could be either \textquotesingle{}M\textquotesingle{} indicating Most significant bit first to be transfered, or \textquotesingle{}L\textquotesingle{} for transfering the least significant bit first. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+SPISettings object would contain the transfer settings we want to fix for our SPI transfer operations 
+\end{DoxyReturn}
+\mbox{\Hypertarget{esp__master__spi_8h_ade54bfd9b976272117c38e9fce788ac3}\label{esp__master__spi_8h_ade54bfd9b976272117c38e9fce788ac3}} 
+\index{esp\_master\_spi.h@{esp\_master\_spi.h}!spi\_send@{spi\_send}}
+\index{spi\_send@{spi\_send}!esp\_master\_spi.h@{esp\_master\_spi.h}}
+\doxysubsubsection{\texorpdfstring{spi\_send()}{spi\_send()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void spi\+\_\+send (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{uint8\+\_\+t}]{data,  }\item[{uint32\+\_\+t}]{clkf,  }\item[{uint8\+\_\+t}]{spi\+\_\+mode,  }\item[{char}]{first\+\_\+bit }\end{DoxyParamCaption})}
+
+
+
+This is a funciton that will allow us to Send data over SPI with transfer conditions defined only once for this specific trnasfer operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & \+: This is the pointer to the SPI class that we have created earlier containing the data of the SPI device we are utilizing. \\
+\hline
+{\em data} & This is the byte of data we want to send. \\
+\hline
+{\em clkf} & This is the SCLK frequency. \\
+\hline
+{\em spi\+\_\+mode} & This is the mode of transfer. Could be input as 0,1,2,3. Each mode refers to the clock polarity as well as the phase. For mode details check ATmega328p doccumentation for SPI data modes. \\
+\hline
+{\em first\+\_\+bit} & This could be either \textquotesingle{}M\textquotesingle{} indicating Most significant bit first to be transfered, or \textquotesingle{}L\textquotesingle{} for transfering the least significant bit first. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{esp__master__spi_8h_ac24a6980b5aa1a0cb1fe6804887416e9}\label{esp__master__spi_8h_ac24a6980b5aa1a0cb1fe6804887416e9}} 
+\index{esp\_master\_spi.h@{esp\_master\_spi.h}!spi\_send@{spi\_send}}
+\index{spi\_send@{spi\_send}!esp\_master\_spi.h@{esp\_master\_spi.h}}
+\doxysubsubsection{\texorpdfstring{spi\_send()}{spi\_send()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void spi\+\_\+send (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{uint8\+\_\+t}]{data,  }\item[{SPISettings}]{mysettings }\end{DoxyParamCaption})}
+
+
+
+Allows us to transfer data through SPI without having to define the transfer settings everytime, we can simply just pass an SPISettings object containing all the settings we want for the transferal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & This is the pointer to the SPI class that we have created earlier containing the data of the SPI device we are utilizing. \\
+\hline
+{\em data} & This is the byte of data we want to transfer over SPI. \\
+\hline
+{\em mysettings} & This is the SPISettings object containing the SPI transfer settings. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{esp__master__spi_8h_a3c3607d99fdcb612780a8ad5e7649538}\label{esp__master__spi_8h_a3c3607d99fdcb612780a8ad5e7649538}} 
+\index{esp\_master\_spi.h@{esp\_master\_spi.h}!spi\_receive@{spi\_receive}}
+\index{spi\_receive@{spi\_receive}!esp\_master\_spi.h@{esp\_master\_spi.h}}
+\doxysubsubsection{\texorpdfstring{spi\_receive()}{spi\_receive()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t spi\+\_\+receive (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{uint32\+\_\+t}]{clkf,  }\item[{uint8\+\_\+t}]{spi\+\_\+mode,  }\item[{char}]{first\+\_\+bit }\end{DoxyParamCaption})}
+
+
+
+This is a function that would allow us to receive a byte from the slave while allowing us to set the SPI settings for that particular transaction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & \+: This is the pointer to the SPI class that we have created earlier containing the data of the SPI device we are utilizing. \\
+\hline
+{\em clkf} & This is the SCLK frequency. \\
+\hline
+{\em spi\+\_\+mode} & This is the mode of transfer. Could be input as 0,1,2,3. Each mode refers to the clock polarity as well as the phase. For mode details check ATmega328p doccumentation for SPI data modes. \\
+\hline
+{\em first\+\_\+bit} & This could be either \textquotesingle{}M\textquotesingle{} indicating Most significant bit first to be transfered, or \textquotesingle{}L\textquotesingle{} for transfering the least significant bit first. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t, which is the byte received from the slave device. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{esp__master__spi_8h_a883a2a59fa8ef563200f300b523f4f47}\label{esp__master__spi_8h_a883a2a59fa8ef563200f300b523f4f47}} 
+\index{esp\_master\_spi.h@{esp\_master\_spi.h}!spi\_receive@{spi\_receive}}
+\index{spi\_receive@{spi\_receive}!esp\_master\_spi.h@{esp\_master\_spi.h}}
+\doxysubsubsection{\texorpdfstring{spi\_receive()}{spi\_receive()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t spi\+\_\+receive (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{SPISettings}]{mysettings }\end{DoxyParamCaption})}
+
+
+
+This is a function that would allow us to receive a byte from the slave using a preset SPI setting object defined in a SPISettings object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & This is the pointer to the SPI class that we have created earlier containing the data of the SPI device we are utilizing. \\
+\hline
+{\em mysettings} & This is the SPISettings object containing the SPI transfer settings. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t, which is the byte received from the slave device. 
+\end{DoxyReturn}

@@ -1,0 +1,46 @@
+\hypertarget{_l_p_c___slave_8h_source}{}\doxysection{LPC\+\_\+\+Slave.\+h}
+\mbox{\hyperlink{_l_p_c___slave_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef LPC\_SLAVE}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define LPC\_SLAVE}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_s_p_i___slave_8h}{SPI\_Slave.h}}"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}stdbool.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{23         MSG\_TYPE\_PITCH,}
+\DoxyCodeLine{24         MSG\_TYPE\_ELEVATION,}
+\DoxyCodeLine{25         MSG\_TYPE\_REFERENCE,}
+\DoxyCodeLine{26         MSG\_TYPE\_CHANGE\_MODE,}
+\DoxyCodeLine{27         MSG\_TYPE\_ACK,}
+\DoxyCodeLine{28         MSG\_TYPE\_NACK,}
+\DoxyCodeLine{29         MSG\_FAILURE,}
+\DoxyCodeLine{30         MSG\_SUCCESS}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\_type\_t}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{37 \textcolor{keyword}{typedef} \textcolor{keyword}{union}\{}
+\DoxyCodeLine{38         \textcolor{keywordtype}{float} float\_num[2];}
+\DoxyCodeLine{39         uint8\_t byte\_num[8];}
+\DoxyCodeLine{40 \}\mbox{\hyperlink{unionf2b}{f2b}};}
+\DoxyCodeLine{48 \textcolor{keywordtype}{void} \mbox{\hyperlink{_l_p_c___slave_8h_a4b5805b48394de582007f450e187374c}{initialize\_LPC}}(uint8\_t SPI\_MODE);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{66 uint8\_t \mbox{\hyperlink{_l_p_c___slave_8h_a86d640d09b65c3527c56438d50e4acf7}{get\_msg\_id}}(uint8\_t start\_byte);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{74 uint8\_t \mbox{\hyperlink{_l_p_c___slave_8h_a74d148ebd4205a184ce1e2ea89716e68}{get\_msg\_length}}(uint8\_t msg\_id);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{80 \textcolor{keywordtype}{void} \mbox{\hyperlink{_l_p_c___slave_8h_ac2c0f781ac38ca35f3ec5115c5f9b981}{send\_ACK}}();}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} \mbox{\hyperlink{_l_p_c___slave_8h_a92fe58192c69ebc45158bf31a95cc071}{send\_NACK}}();}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{97 \textcolor{keywordtype}{bool} \mbox{\hyperlink{_l_p_c___slave_8h_ae4c8053efde163a2584b8f1ba62e6f76}{compare\_crc8}}(uint8\_t* msg\_received, uint8\_t msg\_length);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{108 \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\_type\_t}} \mbox{\hyperlink{_l_p_c___slave_8h_aef1930dbc7c4c0b3ce1557a9c2a91ddd}{LPC\_decode}}(uint8\_t* msg\_received,uint8\_t msg\_id);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{115 uint8\_t \mbox{\hyperlink{_l_p_c___slave_8h_a4b6f4e50433444e8d97e28deee789ce4}{get\_current\_mode}}();}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{124 \textcolor{keywordtype}{void} \mbox{\hyperlink{_l_p_c___slave_8h_a7a90e5dcc37a570c607b5524da7ba197}{get\_decoded\_data}}(\textcolor{keywordtype}{float}* output\_data);}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{131 \mbox{\hyperlink{_l_p_c___slave_8h_a76f51138d3051b734605c5bacc811dba}{msg\_type\_t}} \mbox{\hyperlink{_l_p_c___slave_8h_a8e518d2123fe2346301c2c428a3c9e07}{receive\_data}}();}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,46 @@
+\hypertarget{_m_c_a_l___t_i_m_e_r2_8h_source}{}\doxysection{MCAL\+\_\+\+TIMER2.\+h}
+\mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#ifndef MCAL\_TIMER2}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MCAL\_TIMER2}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <avr/io.h>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/* Preprocessor Macros */}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#ifndef CPU\_CLK\_FREQ\_HZ}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define CPU\_CLK\_FREQ\_HZ     ((uint32\_t) 16000000)}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define OCR2B\_PIN           PD3}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{40 \textcolor{comment}{/* Enum Definitons */}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{46 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{47     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca5b7201155ad173f130b250dc77832467}{TIMER2\_N\_1}} = 1,         }
+\DoxyCodeLine{48     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca09f61511326cd88adfbccf6d27b85ffa}{TIMER2\_N\_8}} = 2,         }
+\DoxyCodeLine{49     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaf92376a0853363c4ff0f4be3df6714e7}{TIMER2\_N\_32}} = 3,        }
+\DoxyCodeLine{50     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca38643f2da73fd50b920b40b482648c04}{TIMER2\_N\_64}} = 4,        }
+\DoxyCodeLine{51     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcad492a095db6c9c239df330496637bf61}{TIMER2\_N\_128}} = 5,       }
+\DoxyCodeLine{52     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fca9ddc6e20ef47116ec250e0b243e088f2}{TIMER2\_N\_256}} = 6,       }
+\DoxyCodeLine{53     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fcaa91479079d1396f99ae83e061d44ee50}{TIMER2\_N\_1024}} = 7       }
+\DoxyCodeLine{54 \} \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3e95e7eca29a4131f5ef2ea23aac1fc}{TIMER2\_PRESCALAR}};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{60 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{61     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5a3b0bd64c380ea6271d695ab846d6415f}{TIMER2\_PWM\_NON\_INVERTED}},        }
+\DoxyCodeLine{62     \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5ae585836e38537fb33fc7b76aab362b90}{TIMER2\_PWM\_INVERTED}}             }
+\DoxyCodeLine{63 \} \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\_PWM\_COM}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{/* Function Declerations */}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{72 uint8\_t \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a9b4e410e3a83ba91fd0ebbff123d4913}{getOCRATimer2}}();}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{82 \textcolor{keywordtype}{void} \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a4dc24ccbf6ca29e0fffc5587cd14bad5}{initTimer2}}(uint32\_t pwmFrequencyHz, \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_aa6735fb77ede76d6ac5c82c5308e67d5}{TIMER2\_PWM\_COM}} workingMode);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{90 \textcolor{keywordtype}{void} \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_ae3f45e69b6e316e9a9a9e0d8b9bb8106}{disableTimer2}}();}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{98 \textcolor{keywordtype}{void} \mbox{\hyperlink{_m_c_a_l___t_i_m_e_r2_8h_a78c14757e545944a1ad532c81990b777}{setDutyCycleTimer2}}(\textcolor{keywordtype}{float} dutyCycle);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

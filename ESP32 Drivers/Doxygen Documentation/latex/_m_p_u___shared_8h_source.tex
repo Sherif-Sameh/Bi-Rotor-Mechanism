@@ -1,0 +1,36 @@
+\hypertarget{_m_p_u___shared_8h_source}{}\doxysection{MPU\+\_\+\+Shared.\+h}
+\mbox{\hyperlink{_m_p_u___shared_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef SHARED\_H}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define SHARED\_H}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}driver/i2c.h"{}}                                             \textcolor{comment}{/* Driver for the ESP32 I2C peripheral. Part of the ESP32 IDF.*/}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{/* Define all symbolic constants for the I2C configuaration */}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define I2C\_MASTER\_SCL\_IO               CONFIG\_I2C\_MASTER\_SCL       }}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define I2C\_MASTER\_SDA\_IO               CONFIG\_I2C\_MASTER\_SDA      }}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define I2C\_PORT\_NUMBER                 I2C\_NUM\_0                   }}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define I2C\_MASTER\_FREQ\_HZ              CONFIG\_I2C\_MASTER\_FREQ\_HZ   }}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define I2C\_MASTER\_TX\_BUF\_DISABLE       0                           }}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define I2C\_MASTER\_RX\_BUF\_DISABLE       0                           }}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define I2C\_MASTER\_TIMEOUT\_MS           20                          }}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define I2C\_MASTER\_ACK\_EN               true                        }}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{70 \textcolor{comment}{/* Symbolic Constants for the MPU6050 */}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define MPU6050\_ADDRESS 0x34}}
+\DoxyCodeLine{78 \textcolor{comment}{/* Function Declerations */}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{85 \textcolor{keywordtype}{void} \mbox{\hyperlink{_m_p_u___shared_8h_ac215bb57574143617b6ab4a3c040060e}{setAD0}}(uint8\_t pinValue);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{94 esp\_err\_t \mbox{\hyperlink{_m_p_u___shared_8h_af49584516d8300210c07a8951f4d1ece}{writeToReg}}(uint8\_t regAddr, uint8\_t data);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{104 esp\_err\_t \mbox{\hyperlink{_m_p_u___shared_8h_ad17e8be8811eb352e99b8fd7d91a8c3d}{readFromReg}}(uint8\_t regAddr, uint8\_t *data, uint8\_t n);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{113 esp\_err\_t \mbox{\hyperlink{_m_p_u___shared_8h_a0d42b35f9a0cf9c2fba2a8430968c080}{readInterruptStatus}}(uint8\_t *value);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{119 esp\_err\_t \mbox{\hyperlink{_m_p_u___shared_8h_a7a47c7a475c11852da1f360ce3052159}{disableInterrupts}}();}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

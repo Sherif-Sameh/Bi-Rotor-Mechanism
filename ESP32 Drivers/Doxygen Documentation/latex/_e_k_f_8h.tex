@@ -1,0 +1,438 @@
+\hypertarget{_e_k_f_8h}{}\doxysection{EKF.\+h File Reference}
+\label{_e_k_f_8h}\index{EKF.h@{EKF.h}}
+
+
+Performs the EKF algorithm by combining readings from a 6-\/axis IMU to provide a good estimate of orientation. This component was added into the system to perform the Extended Kalman Filter (EKF) algorithm based on sensor readings from an IMU where the gyroscopes are used for predicting the state estimates while the accelerometers\textquotesingle{} readings are used in the correction step to validate the predictions made in the previous step. To keep it as flexible as possible the definitions of the state transition and measurement functions along with their Jacobians was omitted from this file, instead they are defined in a seperate file and passed using pointers to the driver for it to call them during the algorithm.  
+
+
+{\ttfamily \#include \char`\"{}MPU\+\_\+\+Basic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MPU\+\_\+\+Advanced.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Functions.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_e_k_f_8h_a4ccf1f007be40a8d1c01f62483ef22b3}{EKF\+\_\+\+SAMPLING\+\_\+\+TIME\+\_\+\+MS}}~CONFIG\+\_\+\+EKF\+\_\+\+SAMPLING\+\_\+\+TIME\+\_\+\+MS
+\item 
+\#define \mbox{\hyperlink{_e_k_f_8h_a1a9b1c8c5f9868ecb6339454d2074e2c}{EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+STATES}}~CONFIG\+\_\+\+EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+STATES
+\item 
+\#define \mbox{\hyperlink{_e_k_f_8h_a9d117002cef935c85811c57e9a2583d1}{EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+OBSERVATIONS}}~CONFIG\+\_\+\+EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+OBSERVATIONS
+\item 
+\#define \mbox{\hyperlink{_e_k_f_8h_a8c15d3c49a03c851c740fd289d5c1a22}{EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+FLAGS}}~7
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void() \mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}}(const float $\ast$, const float $\ast$, float $\ast$)
+\item 
+typedef void() \mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}}(const float $\ast$, float $\ast$)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \{ \newline
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3a2ca442f2cca86358367347622aa166}{EKF\+\_\+\+INIT\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab624c58dcfa4c006dcb8f5abdbffb1c2}{EKF\+\_\+\+STF\+\_\+\+NOT\+\_\+\+DEFINED}}
+, \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab93192d2ccd0f80698cdfe179d491790}{EKF\+\_\+\+MF\+\_\+\+NOT\+\_\+\+DEFINED}}
+, \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa7c2de55a626f12d32149726010616f96}{EKF\+\_\+\+STF\+\_\+\+JACOB\+\_\+\+NOT\+\_\+\+DEFINED}}
+, \newline
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aac35270f9f415d209b916cc96e6dfbebd}{EKF\+\_\+\+MF\+\_\+\+JACOB\+\_\+\+NOT\+\_\+\+DEFINED}}
+, \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa1098f413c7aa435085d4a262d4ace109}{EKF\+\_\+\+PN\+\_\+\+COV\+\_\+\+NOT\+\_\+\+DEFINED}}
+, \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3ead9aa999be2e585dd1075ab18abbbc}{EKF\+\_\+\+MN\+\_\+\+COV\+\_\+\+NOT\+\_\+\+DEFINED}}
+, \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3dbfcfe45270a20d2ebb7fa90018f440}{EKF\+\_\+\+INIT\+\_\+\+NOT\+\_\+\+CALLED}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_abba38de7981192b54d9f7abc4be982d8}{set\+State\+Transition\+Function}} (\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$STF)
+\begin{DoxyCompactList}\small\item\em Sets and stores the pointer to the state transition function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$ \mbox{\hyperlink{_e_k_f_8h_a2e1d2bbf665e4e823c6203e722e62e4e}{get\+State\+Transition\+Function}} ()
+\begin{DoxyCompactList}\small\item\em Returns the stored pointer to the STF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_a102099b600c4e3b9fae3c87d2a50b2bf}{set\+Measurement\+Function}} (\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$MF)
+\begin{DoxyCompactList}\small\item\em Sets and stores the pointer to the measurment function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$ \mbox{\hyperlink{_e_k_f_8h_ac697b2aa6c598bfb09f63f6ed74072df}{get\+Measurement\+Function}} ()
+\begin{DoxyCompactList}\small\item\em Returns the stored pointer to the MF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_ae6641653b21cd3a246097c05a3878f8a}{set\+State\+Transition\+Function\+Jacob}} (\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$STF\+\_\+\+Jacob)
+\begin{DoxyCompactList}\small\item\em Sets and stores the pointer to the Jacobian of the STF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$ \mbox{\hyperlink{_e_k_f_8h_a9aac8c94f7d15e8b19d99b3948c068f8}{get\+State\+Transition\+Function\+Jacob}} ()
+\begin{DoxyCompactList}\small\item\em Returns the stored pointer to the Jacobian of the STF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_ac32a3967c9206939197b1453744b58ce}{set\+Measurement\+Function\+Jacob}} (\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$MF\+\_\+\+Jacob)
+\begin{DoxyCompactList}\small\item\em Sets and stores the pointer to the Jacobian of the MF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$ \mbox{\hyperlink{_e_k_f_8h_a03f2aaac9c041dfc85ab3d209d60c962}{get\+Measurement\+Function\+Jacob}} ()
+\begin{DoxyCompactList}\small\item\em Returns the stored pointer to the Jacobian of the MF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_a30dfc0b28f7d8d1ec13f2b370ef9435d}{set\+Process\+Noise\+Cov}} (float $\ast$PNCov)
+\begin{DoxyCompactList}\small\item\em Sets and stores the value of the Process Noise Covariance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_k_f_8h_a3f5d2b7721883360e39db904d467ca5f}{get\+Process\+Noise\+Cov}} (float $\ast$PNCov)
+\begin{DoxyCompactList}\small\item\em Will copy the value of the PN covariance matrix into the array given. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_a29fb84ce5a81b649664345e66b32fcd5}{set\+Measurement\+Noise\+Cov}} (float $\ast$MNCov)
+\begin{DoxyCompactList}\small\item\em Set the Measurement Noise Covariance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_k_f_8h_a07561e8046e1e00d68d589c933859f7f}{get\+Measurement\+Noise\+Cov}} (float $\ast$MNCov)
+\begin{DoxyCompactList}\small\item\em Will copy the value of the MN covariance matrix into the array given. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} \mbox{\hyperlink{_e_k_f_8h_a9f564093037b528e8109e11b0af26f90}{set\+Initial\+Values}} (float $\ast$initial\+State\+Vector, float $\ast$initial\+Error\+Cov)
+\begin{DoxyCompactList}\small\item\em This function is used to set the initial state vector and error covariance matrix for the EKF. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_k_f_8h_a9ed6ff2240901e726b75264ca705a903}{kalman\+Prediction\+Step}} (float $\ast$gyro\+Readings)
+\begin{DoxyCompactList}\small\item\em Run the prediction step only of the EKF. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_k_f_8h_a48faa3d86f521fd4b3130069df43b49d}{get\+Updated\+State\+Estimate}} (float $\ast$updated\+State\+Vector)
+\begin{DoxyCompactList}\small\item\em Runs a full iteration of the EKF to calculate the updated state vector estimate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_k_f_8h_ae39408732bb3a3b6a04a62f7cc96b089}{kalman\+Correction\+Step}} (float $\ast$acc\+Readings)
+\begin{DoxyCompactList}\small\item\em Run the correction step only of the EKF. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Performs the EKF algorithm by combining readings from a 6-\/axis IMU to provide a good estimate of orientation. This component was added into the system to perform the Extended Kalman Filter (EKF) algorithm based on sensor readings from an IMU where the gyroscopes are used for predicting the state estimates while the accelerometers\textquotesingle{} readings are used in the correction step to validate the predictions made in the previous step. To keep it as flexible as possible the definitions of the state transition and measurement functions along with their Jacobians was omitted from this file, instead they are defined in a seperate file and passed using pointers to the driver for it to call them during the algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Sherif Sameh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/01-\/02
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_e_k_f_8h_a4ccf1f007be40a8d1c01f62483ef22b3}\label{_e_k_f_8h_a4ccf1f007be40a8d1c01f62483ef22b3}} 
+\index{EKF.h@{EKF.h}!EKF\_SAMPLING\_TIME\_MS@{EKF\_SAMPLING\_TIME\_MS}}
+\index{EKF\_SAMPLING\_TIME\_MS@{EKF\_SAMPLING\_TIME\_MS}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{EKF\_SAMPLING\_TIME\_MS}{EKF\_SAMPLING\_TIME\_MS}}
+{\footnotesize\ttfamily \#define EKF\+\_\+\+SAMPLING\+\_\+\+TIME\+\_\+\+MS~CONFIG\+\_\+\+EKF\+\_\+\+SAMPLING\+\_\+\+TIME\+\_\+\+MS}
+
+This parameter is used to set the sampling rate that is used during the calculation of the EKF but does in way enforce that sampling rate, that is left to the application to ensure that this rate is followed. Set through the menuconfig. \mbox{\Hypertarget{_e_k_f_8h_a1a9b1c8c5f9868ecb6339454d2074e2c}\label{_e_k_f_8h_a1a9b1c8c5f9868ecb6339454d2074e2c}} 
+\index{EKF.h@{EKF.h}!EKF\_NUM\_OF\_STATES@{EKF\_NUM\_OF\_STATES}}
+\index{EKF\_NUM\_OF\_STATES@{EKF\_NUM\_OF\_STATES}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{EKF\_NUM\_OF\_STATES}{EKF\_NUM\_OF\_STATES}}
+{\footnotesize\ttfamily \#define EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+STATES~CONFIG\+\_\+\+EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+STATES}
+
+This parameter describes the number of states that are estimated through the EKF. Set through the menuconfig. \mbox{\Hypertarget{_e_k_f_8h_a9d117002cef935c85811c57e9a2583d1}\label{_e_k_f_8h_a9d117002cef935c85811c57e9a2583d1}} 
+\index{EKF.h@{EKF.h}!EKF\_NUM\_OF\_OBSERVATIONS@{EKF\_NUM\_OF\_OBSERVATIONS}}
+\index{EKF\_NUM\_OF\_OBSERVATIONS@{EKF\_NUM\_OF\_OBSERVATIONS}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{EKF\_NUM\_OF\_OBSERVATIONS}{EKF\_NUM\_OF\_OBSERVATIONS}}
+{\footnotesize\ttfamily \#define EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+OBSERVATIONS~CONFIG\+\_\+\+EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+OBSERVATIONS}
+
+This parameter describes the number of available observations to the EKF that it will use to correct the predictions of the model. \mbox{\Hypertarget{_e_k_f_8h_a8c15d3c49a03c851c740fd289d5c1a22}\label{_e_k_f_8h_a8c15d3c49a03c851c740fd289d5c1a22}} 
+\index{EKF.h@{EKF.h}!EKF\_NUM\_OF\_FLAGS@{EKF\_NUM\_OF\_FLAGS}}
+\index{EKF\_NUM\_OF\_FLAGS@{EKF\_NUM\_OF\_FLAGS}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{EKF\_NUM\_OF\_FLAGS}{EKF\_NUM\_OF\_FLAGS}}
+{\footnotesize\ttfamily \#define EKF\+\_\+\+NUM\+\_\+\+OF\+\_\+\+FLAGS~7}
+
+This parameter represents the number of flags that must be set before declaring that the EKF has been initialized successfully and the algorithm can begin. 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}\label{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}} 
+\index{EKF.h@{EKF.h}!nonLinearFunc@{nonLinearFunc}}
+\index{nonLinearFunc@{nonLinearFunc}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{nonLinearFunc}{nonLinearFunc}}
+{\footnotesize\ttfamily non\+Linear\+Func}
+
+Alias for defining a function that does not return anything and takes 3 pointers to float arrays as input. \mbox{\Hypertarget{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}\label{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}} 
+\index{EKF.h@{EKF.h}!nonLinearFunc2@{nonLinearFunc2}}
+\index{nonLinearFunc2@{nonLinearFunc2}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{nonLinearFunc2}{nonLinearFunc2}}
+{\footnotesize\ttfamily non\+Linear\+Func2}
+
+Alias for defining a function that does not return anything and takes 2 pointers to float arrays as input. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}} 
+\index{EKF.h@{EKF.h}!EKF\_STATUS\_t@{EKF\_STATUS\_t}}
+\index{EKF\_STATUS\_t@{EKF\_STATUS\_t}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{EKF\_STATUS\_t}{EKF\_STATUS\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}}}
+
+This enum is used to describe the current status of the EKF and is used as a checklist of processes that should be done to initialize the EKF before starting the algorithm. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_INIT\_SUCCESS@{EKF\_INIT\_SUCCESS}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_INIT\_SUCCESS@{EKF\_INIT\_SUCCESS}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3a2ca442f2cca86358367347622aa166}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3a2ca442f2cca86358367347622aa166}} 
+EKF\+\_\+\+INIT\+\_\+\+SUCCESS&The EKF has been fully initialized succesfully \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_STF\_NOT\_DEFINED@{EKF\_STF\_NOT\_DEFINED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_STF\_NOT\_DEFINED@{EKF\_STF\_NOT\_DEFINED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab624c58dcfa4c006dcb8f5abdbffb1c2}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab624c58dcfa4c006dcb8f5abdbffb1c2}} 
+EKF\+\_\+\+STF\+\_\+\+NOT\+\_\+\+DEFINED&The state transition function (STF) is not set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_MF\_NOT\_DEFINED@{EKF\_MF\_NOT\_DEFINED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_MF\_NOT\_DEFINED@{EKF\_MF\_NOT\_DEFINED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab93192d2ccd0f80698cdfe179d491790}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aab93192d2ccd0f80698cdfe179d491790}} 
+EKF\+\_\+\+MF\+\_\+\+NOT\+\_\+\+DEFINED&The measurement function (MF) is not set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_STF\_JACOB\_NOT\_DEFINED@{EKF\_STF\_JACOB\_NOT\_DEFINED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_STF\_JACOB\_NOT\_DEFINED@{EKF\_STF\_JACOB\_NOT\_DEFINED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa7c2de55a626f12d32149726010616f96}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa7c2de55a626f12d32149726010616f96}} 
+EKF\+\_\+\+STF\+\_\+\+JACOB\+\_\+\+NOT\+\_\+\+DEFINED&The Jacobian of the STF has is not set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_MF\_JACOB\_NOT\_DEFINED@{EKF\_MF\_JACOB\_NOT\_DEFINED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_MF\_JACOB\_NOT\_DEFINED@{EKF\_MF\_JACOB\_NOT\_DEFINED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aac35270f9f415d209b916cc96e6dfbebd}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aac35270f9f415d209b916cc96e6dfbebd}} 
+EKF\+\_\+\+MF\+\_\+\+JACOB\+\_\+\+NOT\+\_\+\+DEFINED&The Jacobian of the MF has is not set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_PN\_COV\_NOT\_DEFINED@{EKF\_PN\_COV\_NOT\_DEFINED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_PN\_COV\_NOT\_DEFINED@{EKF\_PN\_COV\_NOT\_DEFINED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa1098f413c7aa435085d4a262d4ace109}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa1098f413c7aa435085d4a262d4ace109}} 
+EKF\+\_\+\+PN\+\_\+\+COV\+\_\+\+NOT\+\_\+\+DEFINED&The process noise covariance has not been set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_MN\_COV\_NOT\_DEFINED@{EKF\_MN\_COV\_NOT\_DEFINED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_MN\_COV\_NOT\_DEFINED@{EKF\_MN\_COV\_NOT\_DEFINED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3ead9aa999be2e585dd1075ab18abbbc}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3ead9aa999be2e585dd1075ab18abbbc}} 
+EKF\+\_\+\+MN\+\_\+\+COV\+\_\+\+NOT\+\_\+\+DEFINED&The measurement noise covariance has not been set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EKF\_INIT\_NOT\_CALLED@{EKF\_INIT\_NOT\_CALLED}!EKF.h@{EKF.h}}\index{EKF.h@{EKF.h}!EKF\_INIT\_NOT\_CALLED@{EKF\_INIT\_NOT\_CALLED}}}\mbox{\Hypertarget{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3dbfcfe45270a20d2ebb7fa90018f440}\label{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939aa3dbfcfe45270a20d2ebb7fa90018f440}} 
+EKF\+\_\+\+INIT\+\_\+\+NOT\+\_\+\+CALLED&The initial states and error covariance have not been set \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_e_k_f_8h_abba38de7981192b54d9f7abc4be982d8}\label{_e_k_f_8h_abba38de7981192b54d9f7abc4be982d8}} 
+\index{EKF.h@{EKF.h}!setStateTransitionFunction@{setStateTransitionFunction}}
+\index{setStateTransitionFunction@{setStateTransitionFunction}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setStateTransitionFunction()}{setStateTransitionFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+State\+Transition\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$}]{STF }\end{DoxyParamCaption})}
+
+
+
+Sets and stores the pointer to the state transition function. 
+
+\texorpdfstring{$<$}{<} Setters and getters for the parameters of the EKF. 
+\begin{DoxyParams}{Parameters}
+{\em STF} & A function pointer that points to the STF. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+STF\+\_\+\+NOT\+\_\+\+DEFINED if successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a2e1d2bbf665e4e823c6203e722e62e4e}\label{_e_k_f_8h_a2e1d2bbf665e4e823c6203e722e62e4e}} 
+\index{EKF.h@{EKF.h}!getStateTransitionFunction@{getStateTransitionFunction}}
+\index{getStateTransitionFunction@{getStateTransitionFunction}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getStateTransitionFunction()}{getStateTransitionFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$ get\+State\+Transition\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the stored pointer to the STF. 
+
+\begin{DoxyReturn}{Returns}
+non\+Linear\+Func$\ast$ Pointer to the STF, equals NULL if the STF has not been defined. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a102099b600c4e3b9fae3c87d2a50b2bf}\label{_e_k_f_8h_a102099b600c4e3b9fae3c87d2a50b2bf}} 
+\index{EKF.h@{EKF.h}!setMeasurementFunction@{setMeasurementFunction}}
+\index{setMeasurementFunction@{setMeasurementFunction}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setMeasurementFunction()}{setMeasurementFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+Measurement\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$}]{MF }\end{DoxyParamCaption})}
+
+
+
+Sets and stores the pointer to the measurment function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em MF} & A function pointer that points to the MF. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+MF\+\_\+\+NOT\+\_\+\+DEFINED if successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_ac697b2aa6c598bfb09f63f6ed74072df}\label{_e_k_f_8h_ac697b2aa6c598bfb09f63f6ed74072df}} 
+\index{EKF.h@{EKF.h}!getMeasurementFunction@{getMeasurementFunction}}
+\index{getMeasurementFunction@{getMeasurementFunction}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getMeasurementFunction()}{getMeasurementFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$ get\+Measurement\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the stored pointer to the MF. 
+
+\begin{DoxyReturn}{Returns}
+non\+Linear\+Func2$\ast$ Pointer to the MF, equals NULL if the MF has not been defined. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_ae6641653b21cd3a246097c05a3878f8a}\label{_e_k_f_8h_ae6641653b21cd3a246097c05a3878f8a}} 
+\index{EKF.h@{EKF.h}!setStateTransitionFunctionJacob@{setStateTransitionFunctionJacob}}
+\index{setStateTransitionFunctionJacob@{setStateTransitionFunctionJacob}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setStateTransitionFunctionJacob()}{setStateTransitionFunctionJacob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+State\+Transition\+Function\+Jacob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$}]{STF\+\_\+\+Jacob }\end{DoxyParamCaption})}
+
+
+
+Sets and stores the pointer to the Jacobian of the STF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em STF\+\_\+\+Jacob} & A function pointer that points to the Jacobian of the STF. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+STF\+\_\+\+JACOB\+\_\+\+NOT\+\_\+\+DEFINED if successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a9aac8c94f7d15e8b19d99b3948c068f8}\label{_e_k_f_8h_a9aac8c94f7d15e8b19d99b3948c068f8}} 
+\index{EKF.h@{EKF.h}!getStateTransitionFunctionJacob@{getStateTransitionFunctionJacob}}
+\index{getStateTransitionFunctionJacob@{getStateTransitionFunctionJacob}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getStateTransitionFunctionJacob()}{getStateTransitionFunctionJacob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a7d5153e19e9c001ff422a99443ccbe0c}{non\+Linear\+Func}} $\ast$ get\+State\+Transition\+Function\+Jacob (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the stored pointer to the Jacobian of the STF. 
+
+\begin{DoxyReturn}{Returns}
+non\+Linear\+Func$\ast$ Pointer to the Jacobian of the STF, equals NULL if the Jacobian has not been defined. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_ac32a3967c9206939197b1453744b58ce}\label{_e_k_f_8h_ac32a3967c9206939197b1453744b58ce}} 
+\index{EKF.h@{EKF.h}!setMeasurementFunctionJacob@{setMeasurementFunctionJacob}}
+\index{setMeasurementFunctionJacob@{setMeasurementFunctionJacob}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setMeasurementFunctionJacob()}{setMeasurementFunctionJacob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+Measurement\+Function\+Jacob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$}]{MF\+\_\+\+Jacob }\end{DoxyParamCaption})}
+
+
+
+Sets and stores the pointer to the Jacobian of the MF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em MF\+\_\+\+Jacob} & A function pointer that points to the Jacobian of the MF. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+MF\+\_\+\+JACOB\+\_\+\+NOT\+\_\+\+DEFINED if successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a03f2aaac9c041dfc85ab3d209d60c962}\label{_e_k_f_8h_a03f2aaac9c041dfc85ab3d209d60c962}} 
+\index{EKF.h@{EKF.h}!getMeasurementFunctionJacob@{getMeasurementFunctionJacob}}
+\index{getMeasurementFunctionJacob@{getMeasurementFunctionJacob}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getMeasurementFunctionJacob()}{getMeasurementFunctionJacob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a86360f951dd38ea8c6f2812201af2725}{non\+Linear\+Func2}} $\ast$ get\+Measurement\+Function\+Jacob (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the stored pointer to the Jacobian of the MF. 
+
+\begin{DoxyReturn}{Returns}
+non\+Linear\+Func2$\ast$ Pointer to the Jacobian of the MF, equals NULL if the Jacobian has not been defined. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a30dfc0b28f7d8d1ec13f2b370ef9435d}\label{_e_k_f_8h_a30dfc0b28f7d8d1ec13f2b370ef9435d}} 
+\index{EKF.h@{EKF.h}!setProcessNoiseCov@{setProcessNoiseCov}}
+\index{setProcessNoiseCov@{setProcessNoiseCov}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setProcessNoiseCov()}{setProcessNoiseCov()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+Process\+Noise\+Cov (\begin{DoxyParamCaption}\item[{float $\ast$}]{PNCov }\end{DoxyParamCaption})}
+
+
+
+Sets and stores the value of the Process Noise Covariance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em PNCov} & A pointer to an array of floats that represents the process noise covariance matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+PN\+\_\+\+COV\+\_\+\+NOT\+\_\+\+DEFINED if successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a3f5d2b7721883360e39db904d467ca5f}\label{_e_k_f_8h_a3f5d2b7721883360e39db904d467ca5f}} 
+\index{EKF.h@{EKF.h}!getProcessNoiseCov@{getProcessNoiseCov}}
+\index{getProcessNoiseCov@{getProcessNoiseCov}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getProcessNoiseCov()}{getProcessNoiseCov()}}
+{\footnotesize\ttfamily void get\+Process\+Noise\+Cov (\begin{DoxyParamCaption}\item[{float $\ast$}]{PNCov }\end{DoxyParamCaption})}
+
+
+
+Will copy the value of the PN covariance matrix into the array given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em PNCov} & A pointer to the array that the PN covariance will be copied into. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_e_k_f_8h_a29fb84ce5a81b649664345e66b32fcd5}\label{_e_k_f_8h_a29fb84ce5a81b649664345e66b32fcd5}} 
+\index{EKF.h@{EKF.h}!setMeasurementNoiseCov@{setMeasurementNoiseCov}}
+\index{setMeasurementNoiseCov@{setMeasurementNoiseCov}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setMeasurementNoiseCov()}{setMeasurementNoiseCov()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+Measurement\+Noise\+Cov (\begin{DoxyParamCaption}\item[{float $\ast$}]{MNCov }\end{DoxyParamCaption})}
+
+
+
+Set the Measurement Noise Covariance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em MNCov} & A pointer to an array of floats that represents the measurement noise covariance matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+MN\+\_\+\+COV\+\_\+\+NOT\+\_\+\+DEFINED if successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a07561e8046e1e00d68d589c933859f7f}\label{_e_k_f_8h_a07561e8046e1e00d68d589c933859f7f}} 
+\index{EKF.h@{EKF.h}!getMeasurementNoiseCov@{getMeasurementNoiseCov}}
+\index{getMeasurementNoiseCov@{getMeasurementNoiseCov}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getMeasurementNoiseCov()}{getMeasurementNoiseCov()}}
+{\footnotesize\ttfamily void get\+Measurement\+Noise\+Cov (\begin{DoxyParamCaption}\item[{float $\ast$}]{MNCov }\end{DoxyParamCaption})}
+
+
+
+Will copy the value of the MN covariance matrix into the array given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em MNCov} & A pointer to the array that the MN covariance will be copied into. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_e_k_f_8h_a9f564093037b528e8109e11b0af26f90}\label{_e_k_f_8h_a9f564093037b528e8109e11b0af26f90}} 
+\index{EKF.h@{EKF.h}!setInitialValues@{setInitialValues}}
+\index{setInitialValues@{setInitialValues}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{setInitialValues()}{setInitialValues()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_e_k_f_8h_a862c89dfb7b5e4dce3293d820b3b939a}{EKF\+\_\+\+STATUS\+\_\+t}} set\+Initial\+Values (\begin{DoxyParamCaption}\item[{float $\ast$}]{initial\+State\+Vector,  }\item[{float $\ast$}]{initial\+Error\+Cov }\end{DoxyParamCaption})}
+
+
+
+This function is used to set the initial state vector and error covariance matrix for the EKF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+State\+Vector} & A pointer to the start of the initial state vector. \\
+\hline
+{\em initial\+Error\+Cov} & A pointer to the start of the initial error covariance matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EKF\+\_\+\+STATUS\+\_\+t Will not return EKF\+\_\+\+INIT\+\_\+\+NOT\+\_\+\+CALLED if successful. Functions responsible for executing the EKF algorithm. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_e_k_f_8h_a9ed6ff2240901e726b75264ca705a903}\label{_e_k_f_8h_a9ed6ff2240901e726b75264ca705a903}} 
+\index{EKF.h@{EKF.h}!kalmanPredictionStep@{kalmanPredictionStep}}
+\index{kalmanPredictionStep@{kalmanPredictionStep}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{kalmanPredictionStep()}{kalmanPredictionStep()}}
+{\footnotesize\ttfamily void kalman\+Prediction\+Step (\begin{DoxyParamCaption}\item[{float $\ast$}]{gyro\+Readings }\end{DoxyParamCaption})}
+
+
+
+Run the prediction step only of the EKF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gyro\+Readings} & The scaled gyroscope readings in rad/s. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_e_k_f_8h_a48faa3d86f521fd4b3130069df43b49d}\label{_e_k_f_8h_a48faa3d86f521fd4b3130069df43b49d}} 
+\index{EKF.h@{EKF.h}!getUpdatedStateEstimate@{getUpdatedStateEstimate}}
+\index{getUpdatedStateEstimate@{getUpdatedStateEstimate}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{getUpdatedStateEstimate()}{getUpdatedStateEstimate()}}
+{\footnotesize\ttfamily void get\+Updated\+State\+Estimate (\begin{DoxyParamCaption}\item[{float $\ast$}]{updated\+State\+Vector }\end{DoxyParamCaption})}
+
+
+
+Runs a full iteration of the EKF to calculate the updated state vector estimate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em updated\+State\+Vector} & A pointer to an array of floats that will store the updated state vector estimate. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_e_k_f_8h_ae39408732bb3a3b6a04a62f7cc96b089}\label{_e_k_f_8h_ae39408732bb3a3b6a04a62f7cc96b089}} 
+\index{EKF.h@{EKF.h}!kalmanCorrectionStep@{kalmanCorrectionStep}}
+\index{kalmanCorrectionStep@{kalmanCorrectionStep}!EKF.h@{EKF.h}}
+\doxysubsubsection{\texorpdfstring{kalmanCorrectionStep()}{kalmanCorrectionStep()}}
+{\footnotesize\ttfamily void kalman\+Correction\+Step (\begin{DoxyParamCaption}\item[{float $\ast$}]{acc\+Readings }\end{DoxyParamCaption})}
+
+
+
+Run the correction step only of the EKF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em acc\+Readings} & The scaled accelerometer readings in m/s$^\wedge$2. \\
+\hline
+\end{DoxyParams}

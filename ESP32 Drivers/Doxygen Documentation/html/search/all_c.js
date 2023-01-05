@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['send_5fack_0',['send_ACK',['../class_l_p_c.html#a3316d63319661e03a9d10a2d0e76aba1',1,'LPC']]],
+  ['send_5felevation_1',['send_elevation',['../class_l_p_c.html#ae7dee9ce416c8c371be95ed9d824a783',1,'LPC']]],
+  ['send_5fmessage_2',['Send_message',['../class_l_p_c.html#a2d3f5b35266043add6e11a01957247a5',1,'LPC']]],
+  ['send_5fnack_3',['send_NACK',['../class_l_p_c.html#ada08e6697abe857a436d9df5d0fee3b9',1,'LPC']]],
+  ['send_5fpitch_4',['send_pitch',['../class_l_p_c.html#af08ad156dee78908f79917f243a57e32',1,'LPC']]],
+  ['send_5freference_5',['send_reference',['../class_l_p_c.html#a698c38e0acef2fa4ba5cb1c0a7bd90aa',1,'LPC']]],
+  ['set_5fmode_6',['set_mode',['../class_l_p_c.html#aa6e9e80eea10e6fd0b695bb498d3ef4b',1,'LPC']]],
+  ['set_5fmsg_5fdata_7',['set_MSG_data',['../class_l_p_c.html#ae1a6095c130667c9230a1528987c62be',1,'LPC']]],
+  ['set_5fspi_5fsettings_8',['set_spi_settings',['../esp__master__spi_8h.html#afab3158fbdf25232129482cc923063e1',1,'esp_master_spi.h']]],
+  ['setaccfs_5frange_9',['setAccFS_Range',['../_m_p_u___basic_8h.html#a5ca1a05833c359bd8385789ceeb071c6',1,'MPU_Basic.h']]],
+  ['setad0_10',['setAD0',['../_m_p_u___shared_8h.html#ac215bb57574143617b6ab4a3c040060e',1,'MPU_Shared.h']]],
+  ['setclocksource_11',['setClockSource',['../_m_p_u___advanced_8h.html#ade7e5f350ceed9094612d09c5411c004',1,'MPU_Advanced.h']]],
+  ['setdlpf_12',['setDLPF',['../_m_p_u___advanced_8h.html#a49df46842148d877e2934294e4f1b325',1,'MPU_Advanced.h']]],
+  ['setgyrofs_5frange_13',['setGyroFS_Range',['../_m_p_u___basic_8h.html#ae4833a99235bfa2e3c7e08c81386c7e2',1,'MPU_Basic.h']]],
+  ['setinitialvalues_14',['setInitialValues',['../_e_k_f_8h.html#a9f564093037b528e8109e11b0af26f90',1,'EKF.h']]],
+  ['setmeasurementfunction_15',['setMeasurementFunction',['../_e_k_f_8h.html#a102099b600c4e3b9fae3c87d2a50b2bf',1,'EKF.h']]],
+  ['setmeasurementfunctionjacob_16',['setMeasurementFunctionJacob',['../_e_k_f_8h.html#ac32a3967c9206939197b1453744b58ce',1,'EKF.h']]],
+  ['setmeasurementnoisecov_17',['setMeasurementNoiseCov',['../_e_k_f_8h.html#a29fb84ce5a81b649664345e66b32fcd5',1,'EKF.h']]],
+  ['setprocessnoisecov_18',['setProcessNoiseCov',['../_e_k_f_8h.html#a30dfc0b28f7d8d1ec13f2b370ef9435d',1,'EKF.h']]],
+  ['setsamplerate_19',['setSampleRate',['../_m_p_u___advanced_8h.html#a93836db8098256ba7f5f8c6f6ede2f77',1,'MPU_Advanced.h']]],
+  ['setstatetransitionfunction_20',['setStateTransitionFunction',['../_e_k_f_8h.html#abba38de7981192b54d9f7abc4be982d8',1,'EKF.h']]],
+  ['setstatetransitionfunctionjacob_21',['setStateTransitionFunctionJacob',['../_e_k_f_8h.html#ae6641653b21cd3a246097c05a3878f8a',1,'EKF.h']]],
+  ['spi_5freceive_22',['spi_receive',['../esp__master__spi_8h.html#a3c3607d99fdcb612780a8ad5e7649538',1,'spi_receive(SPIClass *spi, uint32_t clkf, uint8_t spi_mode, char first_bit):&#160;esp_master_spi.h'],['../esp__master__spi_8h.html#a883a2a59fa8ef563200f300b523f4f47',1,'spi_receive(SPIClass *spi, SPISettings mysettings):&#160;esp_master_spi.h']]],
+  ['spi_5fsend_23',['spi_send',['../esp__master__spi_8h.html#ade54bfd9b976272117c38e9fce788ac3',1,'spi_send(SPIClass *spi, uint8_t data, uint32_t clkf, uint8_t spi_mode, char first_bit):&#160;esp_master_spi.h'],['../esp__master__spi_8h.html#ac24a6980b5aa1a0cb1fe6804887416e9',1,'spi_send(SPIClass *spi, uint8_t data, SPISettings mysettings):&#160;esp_master_spi.h']]]
+];

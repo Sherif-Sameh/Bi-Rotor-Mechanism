@@ -1,0 +1,501 @@
+\hypertarget{_m_p_u___basic_8h}{}\doxysection{MPU\+\_\+\+Basic.\+h File Reference}
+\label{_m_p_u___basic_8h}\index{MPU\_Basic.h@{MPU\_Basic.h}}
+
+
+For basic operation of the MPU6050. This file includes all the prototypes for the basic functions of the MPU6050.  
+
+
+{\ttfamily \#include \char`\"{}MPU\+\_\+\+Shared.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a0424027e104688d3a84f2243b9082ea0}{ACCELEROMETER\+\_\+\+X\+\_\+\+BIAS\+\_\+\+FACTOR}}~((float) 259.\+5)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a89d24c2927d267de8fdcfb3e119cf4eb}{ACCELEROMETER\+\_\+\+Y\+\_\+\+BIAS\+\_\+\+FACTOR}}~((float) 86.\+2)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a63bdeac9009c27acafb9a10afc6a95ee}{ACCELEROMETER\+\_\+\+Z\+\_\+\+BIAS\+\_\+\+FACTOR}}~((float) -\/1825.\+2)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a32b5bb4ec6023873a9c43ab580d8bad0}{ACCELEROMETER\+\_\+\+X\+\_\+\+SF\+\_\+\+CORRECTION\+\_\+\+FACTOR}}~((float) 0.\+9493)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_aa354c336ab9919fd781d3407ce9ff1e9}{ACCELEROMETER\+\_\+\+Y\+\_\+\+SF\+\_\+\+CORRECTION\+\_\+\+FACTOR}}~((float) 1.\+0307)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a61fa6d25421148de6fcfe6b87284cecf}{ACCELEROMETER\+\_\+\+Z\+\_\+\+SF\+\_\+\+CORRECTION\+\_\+\+FACTOR}}~((float) 0.\+9842)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a7421758a2aa2c734076db77289c25315}{GYRO\+\_\+\+X\+\_\+\+BIAS\+\_\+\+FACTOR}}~((float) -\/306.\+7)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a6cf15332fdb20c2784612c631e86cf37}{GYRO\+\_\+\+Y\+\_\+\+BIAS\+\_\+\+FACTOR}}~((float) 65.\+43)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a32ed31d44fd86a5aefd7df4f68f5b672}{GYRO\+\_\+\+Z\+\_\+\+BIAS\+\_\+\+FACTOR}}~((float) -\/15.\+2)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_ad2cb6042a3382a4c4a7bafb7c666a39a}{ACCELEROMETER\+\_\+\+APPLY\+\_\+\+CALIBRATION}}(RAW,  BIAS\+\_\+\+FACTOR,  CORRECTION\+\_\+\+FACTOR)~                        (CORRECTION\+\_\+\+FACTOR $\ast$ ((float) RAW -\/ BIAS\+\_\+\+FACTOR))
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a1466ef00c10cf9dca64f8ead20bc326c}{GYRO\+\_\+\+APPLY\+\_\+\+CALIBRATION}}(RAW,  BIAS\+\_\+\+FACTOR)~                        ((float) RAW -\/ BIAS\+\_\+\+FACTOR)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a7f3095380cda7817b97b4996ca71e3ec}{ACCELEROMETER\+\_\+\+CONVERT\+\_\+\+SF\+\_\+\+SI}}(SF)~(SF / 9.\+81)
+\item 
+\#define \mbox{\hyperlink{_m_p_u___basic_8h_a3b739f67f400fe717c1a41ac94bcae42}{GYRO\+\_\+\+CONVERT\+\_\+\+SF\+\_\+\+SI}}(SF)~((SF $\ast$ 180) / 3.\+1416)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\+\_\+\+FS\+\_\+range}} \{ \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22acc99d753531a3d511b8d596a1d23546a}{ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+2G}}
+, \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a23fd24e025acb1a626a65ec59e4afe77}{ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+4G}}
+, \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a12e7d5fc7185000d50b76800c270e570}{ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+8G}}
+, \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a11c4d5b35c88e6372ffac541bc3cb304}{ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+16G}}
+ \}
+\item 
+enum \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\+\_\+\+FS\+\_\+range}} \{ \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a66de62e0a2d2f8a4e598116a90b22eb3}{GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+250\+DPS}}
+, \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355ad466515e99519b9b7b10055aa613f583}{GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+500\+DPS}}
+, \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a1d233836f64a4222024ac7f44f92690f}{GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+1000\+DPS}}
+, \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a7b91746919e8e06d22d3ca45f0f7648e}{GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+2000\+DPS}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_ad6da956da7edc9fd38e6ed801d2daf9f}{mpu\+Init}} (uint8\+\_\+t AD0)
+\begin{DoxyCompactList}\small\item\em This function intializes the IMU by setting the value of the AD0 bit in its address, Initializing the I2C port chosen, and then waking up the IMU from sleep mode. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a33a6662104d96d140233039d1799f3bc}{wake\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Wake up the IMU from sleep mode. This function writes to MPU6050\textquotesingle{}s power management register in order to get the device out of its default state at startup which is sleep mode. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_ab7bc838f54ad1ab9753141e76ca911dc}{device\+Reset}} ()
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a5ca1a05833c359bd8385789ceeb071c6}{set\+Acc\+FS\+\_\+\+Range}} (\mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\+\_\+\+FS\+\_\+range}} FS\+\_\+\+SELECT)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_ae4833a99235bfa2e3c7e08c81386c7e2}{set\+Gyro\+FS\+\_\+\+Range}} (\mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\+\_\+\+FS\+\_\+range}} FS\+\_\+\+SELECT)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_ac8d8a4c2f8e300dce7f4f6976bc9fa3d}{get\+Acc\+Readings}} (int16\+\_\+t $\ast$data, uint8\+\_\+t skip\+From\+Beginning, uint8\+\_\+t skip\+From\+End)
+\begin{DoxyCompactList}\small\item\em This function retrieves the raw accelerometer readings from the MPU6050. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a7131f51e3e09c742e7b1c1143c83029b}{get\+Acc\+Readings\+Calibrated}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function will retrieve the raw accelerometer readings and appy the neccessary calibration model to them to correct them. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a65b2e6cf4a67a3c26cb61d720abfd0f8}{get\+Acc\+Readings\+Scaled}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function will retrieve the raw readings, apply the calibration model to them and finally scale them into the default units of the MPU6050 which are g\textquotesingle{}s. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a4e012976a981b7e36f191ebb89d8bcc0}{get\+Acc\+Readings\+Scaled\+SI}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function will retrieve the raw readings, apply calibration modelto them and finally scale them into SI units of acceleration which are m/s$^\wedge$2. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a67385440be28a185683b252a4831b4e5}{get\+Gyro\+Readings}} (int16\+\_\+t $\ast$data, uint8\+\_\+t skip\+From\+Beginning, uint8\+\_\+t skip\+From\+End)
+\begin{DoxyCompactList}\small\item\em This function retrieves the raw gyroscope readings from the MPU6050. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a47bf99360546e00ab0e09dae8b18855b}{get\+Gyro\+Readings\+Calibrated}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function will retrieve the raw gyroscope readings then apply the gyro\textquotesingle{}s calibration model to them in order to correct them. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a8a0b3f887cf190696d4d4237d0b9ac07}{get\+Gyro\+Readings\+Scaled}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function will retrieve the raw readings, apply the calibration model to them and finally scale them into the default units of the MPU6050 which are degrees per second (DPS). \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_a6396dc17af009d0155c1a9b560d52b1f}{get\+Gyro\+Readings\+Scaled\+SI}} (float $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function will retrieve the raw readings, apply the calibration model to them and finally scale them into the SI units of angular rate/velocity which are radians per second (rad/s). \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{_m_p_u___basic_8h_aef065a09505e32981a014dfba7d28a3d}{get\+Temp\+Readings}} (int16\+\_\+t $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+For basic operation of the MPU6050. This file includes all the prototypes for the basic functions of the MPU6050. 
+
+\begin{DoxyAuthor}{Author}
+Sherif Sameh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/14
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a0424027e104688d3a84f2243b9082ea0}\label{_m_p_u___basic_8h_a0424027e104688d3a84f2243b9082ea0}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_X\_BIAS\_FACTOR@{ACCELEROMETER\_X\_BIAS\_FACTOR}}
+\index{ACCELEROMETER\_X\_BIAS\_FACTOR@{ACCELEROMETER\_X\_BIAS\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_X\_BIAS\_FACTOR}{ACCELEROMETER\_X\_BIAS\_FACTOR}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+X\+\_\+\+BIAS\+\_\+\+FACTOR~((float) 259.\+5)}
+
+The bias factor used in correcting the X-\/axis accelerometer\textquotesingle{}s reading against constant bias errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a89d24c2927d267de8fdcfb3e119cf4eb}\label{_m_p_u___basic_8h_a89d24c2927d267de8fdcfb3e119cf4eb}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_Y\_BIAS\_FACTOR@{ACCELEROMETER\_Y\_BIAS\_FACTOR}}
+\index{ACCELEROMETER\_Y\_BIAS\_FACTOR@{ACCELEROMETER\_Y\_BIAS\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_Y\_BIAS\_FACTOR}{ACCELEROMETER\_Y\_BIAS\_FACTOR}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+Y\+\_\+\+BIAS\+\_\+\+FACTOR~((float) 86.\+2)}
+
+The bias factor used in correcting the Y-\/axis accelerometer\textquotesingle{}s reading against constant bias errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a63bdeac9009c27acafb9a10afc6a95ee}\label{_m_p_u___basic_8h_a63bdeac9009c27acafb9a10afc6a95ee}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_Z\_BIAS\_FACTOR@{ACCELEROMETER\_Z\_BIAS\_FACTOR}}
+\index{ACCELEROMETER\_Z\_BIAS\_FACTOR@{ACCELEROMETER\_Z\_BIAS\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_Z\_BIAS\_FACTOR}{ACCELEROMETER\_Z\_BIAS\_FACTOR}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+Z\+\_\+\+BIAS\+\_\+\+FACTOR~((float) -\/1825.\+2)}
+
+The bias factor used in correcting the Z-\/axis accelerometer\textquotesingle{}s reading against constant bias errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a32b5bb4ec6023873a9c43ab580d8bad0}\label{_m_p_u___basic_8h_a32b5bb4ec6023873a9c43ab580d8bad0}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR@{ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR}}
+\index{ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR@{ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR}{ACCELEROMETER\_X\_SF\_CORRECTION\_FACTOR}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+X\+\_\+\+SF\+\_\+\+CORRECTION\+\_\+\+FACTOR~((float) 0.\+9493)}
+
+The factor used in correcting the X-\/axis accelerometer\textquotesingle{}s readings against scale factor errors. \mbox{\Hypertarget{_m_p_u___basic_8h_aa354c336ab9919fd781d3407ce9ff1e9}\label{_m_p_u___basic_8h_aa354c336ab9919fd781d3407ce9ff1e9}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR@{ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR}}
+\index{ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR@{ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR}{ACCELEROMETER\_Y\_SF\_CORRECTION\_FACTOR}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+Y\+\_\+\+SF\+\_\+\+CORRECTION\+\_\+\+FACTOR~((float) 1.\+0307)}
+
+The factor used in correcting the Y-\/axis accelerometer\textquotesingle{}s readings against scale factor errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a61fa6d25421148de6fcfe6b87284cecf}\label{_m_p_u___basic_8h_a61fa6d25421148de6fcfe6b87284cecf}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR@{ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR}}
+\index{ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR@{ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR}{ACCELEROMETER\_Z\_SF\_CORRECTION\_FACTOR}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+Z\+\_\+\+SF\+\_\+\+CORRECTION\+\_\+\+FACTOR~((float) 0.\+9842)}
+
+The factor used in correcting the Z-\/axis accelerometer\textquotesingle{}s readings against scale factor errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a7421758a2aa2c734076db77289c25315}\label{_m_p_u___basic_8h_a7421758a2aa2c734076db77289c25315}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_X\_BIAS\_FACTOR@{GYRO\_X\_BIAS\_FACTOR}}
+\index{GYRO\_X\_BIAS\_FACTOR@{GYRO\_X\_BIAS\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_X\_BIAS\_FACTOR}{GYRO\_X\_BIAS\_FACTOR}}
+{\footnotesize\ttfamily \#define GYRO\+\_\+\+X\+\_\+\+BIAS\+\_\+\+FACTOR~((float) -\/306.\+7)}
+
+The bias factor used in correcting the X-\/axis gyroscope\textquotesingle{}s readings against constant bias errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a6cf15332fdb20c2784612c631e86cf37}\label{_m_p_u___basic_8h_a6cf15332fdb20c2784612c631e86cf37}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_Y\_BIAS\_FACTOR@{GYRO\_Y\_BIAS\_FACTOR}}
+\index{GYRO\_Y\_BIAS\_FACTOR@{GYRO\_Y\_BIAS\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_Y\_BIAS\_FACTOR}{GYRO\_Y\_BIAS\_FACTOR}}
+{\footnotesize\ttfamily \#define GYRO\+\_\+\+Y\+\_\+\+BIAS\+\_\+\+FACTOR~((float) 65.\+43)}
+
+The bias factor used in correcting the Y-\/axis gyroscope\textquotesingle{}s readings against constant bias errors. \mbox{\Hypertarget{_m_p_u___basic_8h_a32ed31d44fd86a5aefd7df4f68f5b672}\label{_m_p_u___basic_8h_a32ed31d44fd86a5aefd7df4f68f5b672}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_Z\_BIAS\_FACTOR@{GYRO\_Z\_BIAS\_FACTOR}}
+\index{GYRO\_Z\_BIAS\_FACTOR@{GYRO\_Z\_BIAS\_FACTOR}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_Z\_BIAS\_FACTOR}{GYRO\_Z\_BIAS\_FACTOR}}
+{\footnotesize\ttfamily \#define GYRO\+\_\+\+Z\+\_\+\+BIAS\+\_\+\+FACTOR~((float) -\/15.\+2)}
+
+The bias factor used in correcting the Z-\/axis gyroscope\textquotesingle{}s readings against constant bias errors. \mbox{\Hypertarget{_m_p_u___basic_8h_ad2cb6042a3382a4c4a7bafb7c666a39a}\label{_m_p_u___basic_8h_ad2cb6042a3382a4c4a7bafb7c666a39a}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_APPLY\_CALIBRATION@{ACCELEROMETER\_APPLY\_CALIBRATION}}
+\index{ACCELEROMETER\_APPLY\_CALIBRATION@{ACCELEROMETER\_APPLY\_CALIBRATION}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_APPLY\_CALIBRATION}{ACCELEROMETER\_APPLY\_CALIBRATION}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+APPLY\+\_\+\+CALIBRATION(\begin{DoxyParamCaption}\item[{}]{RAW,  }\item[{}]{BIAS\+\_\+\+FACTOR,  }\item[{}]{CORRECTION\+\_\+\+FACTOR }\end{DoxyParamCaption})~                        (CORRECTION\+\_\+\+FACTOR $\ast$ ((float) RAW -\/ BIAS\+\_\+\+FACTOR))}
+
+This macro is used to apply the neccesary calibration to the accelerometer\textquotesingle{}s raw readings. 
+\begin{DoxyParams}{Parameters}
+{\em RAW} & The sensor\textquotesingle{}s raw readings. \\
+\hline
+{\em BIAS\+\_\+\+FACTOR} & The sensor\textquotesingle{}s constant bias correction factor. \\
+\hline
+{\em CORRECTION\+\_\+\+FACTOR} & The sensor\textquotesingle{}s sensitivity scale factor correction factor. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a1466ef00c10cf9dca64f8ead20bc326c}\label{_m_p_u___basic_8h_a1466ef00c10cf9dca64f8ead20bc326c}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_APPLY\_CALIBRATION@{GYRO\_APPLY\_CALIBRATION}}
+\index{GYRO\_APPLY\_CALIBRATION@{GYRO\_APPLY\_CALIBRATION}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_APPLY\_CALIBRATION}{GYRO\_APPLY\_CALIBRATION}}
+{\footnotesize\ttfamily \#define GYRO\+\_\+\+APPLY\+\_\+\+CALIBRATION(\begin{DoxyParamCaption}\item[{}]{RAW,  }\item[{}]{BIAS\+\_\+\+FACTOR }\end{DoxyParamCaption})~                        ((float) RAW -\/ BIAS\+\_\+\+FACTOR)}
+
+This macro is used to apply the neccesary calibration to the gryoscope\textquotesingle{}s raw readings. 
+\begin{DoxyParams}{Parameters}
+{\em RAW} & The sensor\textquotesingle{}s raw readings. \\
+\hline
+{\em BIAS\+\_\+\+FACTOR} & The sensor\textquotesingle{}s constant bias correction factor. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a7f3095380cda7817b97b4996ca71e3ec}\label{_m_p_u___basic_8h_a7f3095380cda7817b97b4996ca71e3ec}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_CONVERT\_SF\_SI@{ACCELEROMETER\_CONVERT\_SF\_SI}}
+\index{ACCELEROMETER\_CONVERT\_SF\_SI@{ACCELEROMETER\_CONVERT\_SF\_SI}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{ACCELEROMETER\_CONVERT\_SF\_SI}{ACCELEROMETER\_CONVERT\_SF\_SI}}
+{\footnotesize\ttfamily \#define ACCELEROMETER\+\_\+\+CONVERT\+\_\+\+SF\+\_\+\+SI(\begin{DoxyParamCaption}\item[{}]{SF }\end{DoxyParamCaption})~(SF / 9.\+81)}
+
+This macro is used to convert the sensor\textquotesingle{}s scale factor from LSB/g to LSB/(m/s$^\wedge$2). 
+\begin{DoxyParams}{Parameters}
+{\em SF} & The sensor\textquotesingle{}s scale factor in LSB/g. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a3b739f67f400fe717c1a41ac94bcae42}\label{_m_p_u___basic_8h_a3b739f67f400fe717c1a41ac94bcae42}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_CONVERT\_SF\_SI@{GYRO\_CONVERT\_SF\_SI}}
+\index{GYRO\_CONVERT\_SF\_SI@{GYRO\_CONVERT\_SF\_SI}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{GYRO\_CONVERT\_SF\_SI}{GYRO\_CONVERT\_SF\_SI}}
+{\footnotesize\ttfamily \#define GYRO\+\_\+\+CONVERT\+\_\+\+SF\+\_\+\+SI(\begin{DoxyParamCaption}\item[{}]{SF }\end{DoxyParamCaption})~((SF $\ast$ 180) / 3.\+1416)}
+
+This macro is used to convert the sensor\textquotesingle{}s scale factor from LSB/dps to LSB/(rad/s). 
+\begin{DoxyParams}{Parameters}
+{\em SF} & The sensor\textquotesingle{}s scale factor in LSB/dps. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}\label{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!acc\_FS\_range@{acc\_FS\_range}}
+\index{acc\_FS\_range@{acc\_FS\_range}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{acc\_FS\_range}{acc\_FS\_range}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\+\_\+\+FS\+\_\+range}}}
+
+This enum is used to select the full scale range of the accelerometers. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCELEROMETER\_FS\_RANGE\_2G@{ACCELEROMETER\_FS\_RANGE\_2G}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_FS\_RANGE\_2G@{ACCELEROMETER\_FS\_RANGE\_2G}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22acc99d753531a3d511b8d596a1d23546a}\label{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22acc99d753531a3d511b8d596a1d23546a}} 
+ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+2G&FS Range = +-\/2g \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCELEROMETER\_FS\_RANGE\_4G@{ACCELEROMETER\_FS\_RANGE\_4G}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_FS\_RANGE\_4G@{ACCELEROMETER\_FS\_RANGE\_4G}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a23fd24e025acb1a626a65ec59e4afe77}\label{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a23fd24e025acb1a626a65ec59e4afe77}} 
+ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+4G&FS Range = +-\/4g \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCELEROMETER\_FS\_RANGE\_8G@{ACCELEROMETER\_FS\_RANGE\_8G}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_FS\_RANGE\_8G@{ACCELEROMETER\_FS\_RANGE\_8G}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a12e7d5fc7185000d50b76800c270e570}\label{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a12e7d5fc7185000d50b76800c270e570}} 
+ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+8G&FS Range = +-\/8g \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCELEROMETER\_FS\_RANGE\_16G@{ACCELEROMETER\_FS\_RANGE\_16G}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!ACCELEROMETER\_FS\_RANGE\_16G@{ACCELEROMETER\_FS\_RANGE\_16G}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a11c4d5b35c88e6372ffac541bc3cb304}\label{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22a11c4d5b35c88e6372ffac541bc3cb304}} 
+ACCELEROMETER\+\_\+\+FS\+\_\+\+RANGE\+\_\+16G&FS Range = +-\/16g \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}\label{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!gyro\_FS\_range@{gyro\_FS\_range}}
+\index{gyro\_FS\_range@{gyro\_FS\_range}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{gyro\_FS\_range}{gyro\_FS\_range}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\+\_\+\+FS\+\_\+range}}}
+
+This enum is used to select the full scale range of the gyroscopes. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_FS\_RANGE\_250DPS@{GYRO\_FS\_RANGE\_250DPS}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_FS\_RANGE\_250DPS@{GYRO\_FS\_RANGE\_250DPS}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a66de62e0a2d2f8a4e598116a90b22eb3}\label{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a66de62e0a2d2f8a4e598116a90b22eb3}} 
+GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+250\+DPS&FS Range = +-\/250dps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_FS\_RANGE\_500DPS@{GYRO\_FS\_RANGE\_500DPS}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_FS\_RANGE\_500DPS@{GYRO\_FS\_RANGE\_500DPS}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a4ef92920120624112846a87579352355ad466515e99519b9b7b10055aa613f583}\label{_m_p_u___basic_8h_a4ef92920120624112846a87579352355ad466515e99519b9b7b10055aa613f583}} 
+GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+500\+DPS&FS Range = +-\/500dps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_FS\_RANGE\_1000DPS@{GYRO\_FS\_RANGE\_1000DPS}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_FS\_RANGE\_1000DPS@{GYRO\_FS\_RANGE\_1000DPS}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a1d233836f64a4222024ac7f44f92690f}\label{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a1d233836f64a4222024ac7f44f92690f}} 
+GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+1000\+DPS&FS Range = +-\/1000dps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_FS\_RANGE\_2000DPS@{GYRO\_FS\_RANGE\_2000DPS}!MPU\_Basic.h@{MPU\_Basic.h}}\index{MPU\_Basic.h@{MPU\_Basic.h}!GYRO\_FS\_RANGE\_2000DPS@{GYRO\_FS\_RANGE\_2000DPS}}}\mbox{\Hypertarget{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a7b91746919e8e06d22d3ca45f0f7648e}\label{_m_p_u___basic_8h_a4ef92920120624112846a87579352355a7b91746919e8e06d22d3ca45f0f7648e}} 
+GYRO\+\_\+\+FS\+\_\+\+RANGE\+\_\+2000\+DPS&FS Range = +-\/2000dps \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_p_u___basic_8h_ad6da956da7edc9fd38e6ed801d2daf9f}\label{_m_p_u___basic_8h_ad6da956da7edc9fd38e6ed801d2daf9f}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!mpuInit@{mpuInit}}
+\index{mpuInit@{mpuInit}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{mpuInit()}{mpuInit()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t mpu\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{AD0 }\end{DoxyParamCaption})}
+
+
+
+This function intializes the IMU by setting the value of the AD0 bit in its address, Initializing the I2C port chosen, and then waking up the IMU from sleep mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em AD0} & This variable reflects the state of the AD0 pin on the MPU6050 where 1 means its connected to VCC or 0 when its connected to GND. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a33a6662104d96d140233039d1799f3bc}\label{_m_p_u___basic_8h_a33a6662104d96d140233039d1799f3bc}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!wakeUp@{wakeUp}}
+\index{wakeUp@{wakeUp}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{wakeUp()}{wakeUp()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t wake\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Wake up the IMU from sleep mode. This function writes to MPU6050\textquotesingle{}s power management register in order to get the device out of its default state at startup which is sleep mode. 
+
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_ab7bc838f54ad1ab9753141e76ca911dc}\label{_m_p_u___basic_8h_ab7bc838f54ad1ab9753141e76ca911dc}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!deviceReset@{deviceReset}}
+\index{deviceReset@{deviceReset}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{deviceReset()}{deviceReset()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t device\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function will reset all the MPU6050\textquotesingle{}s registers to their default values. \begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a5ca1a05833c359bd8385789ceeb071c6}\label{_m_p_u___basic_8h_a5ca1a05833c359bd8385789ceeb071c6}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!setAccFS\_Range@{setAccFS\_Range}}
+\index{setAccFS\_Range@{setAccFS\_Range}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{setAccFS\_Range()}{setAccFS\_Range()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+Acc\+FS\+\_\+\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\+\_\+\+FS\+\_\+range}}}]{FS\+\_\+\+SELECT }\end{DoxyParamCaption})}
+
+This function sets full scale range for the 3 accelerometers. Obviously as the range goes up, the sensor\textquotesingle{}s resolution becomes worse. 
+\begin{DoxyParams}{Parameters}
+{\em FS\+\_\+\+SELECT} & This parameter chooses the FS range for the accelerometers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{_m_p_u___basic_8h_a3a7bd8922ccff2ff87f5c18b4d21fb22}{acc\+\_\+\+FS\+\_\+range}} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_ae4833a99235bfa2e3c7e08c81386c7e2}\label{_m_p_u___basic_8h_ae4833a99235bfa2e3c7e08c81386c7e2}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!setGyroFS\_Range@{setGyroFS\_Range}}
+\index{setGyroFS\_Range@{setGyroFS\_Range}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{setGyroFS\_Range()}{setGyroFS\_Range()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t set\+Gyro\+FS\+\_\+\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\+\_\+\+FS\+\_\+range}}}]{FS\+\_\+\+SELECT }\end{DoxyParamCaption})}
+
+This function sets full scale range for the 3 gyroscopes. Obviously as the range goes up, the sensor\textquotesingle{}s resolution becomes worse. 
+\begin{DoxyParams}{Parameters}
+{\em FS\+\_\+\+SELECT} & This parameter chooses the FS range for the gyroscopes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{_m_p_u___basic_8h_a4ef92920120624112846a87579352355}{gyro\+\_\+\+FS\+\_\+range}} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_ac8d8a4c2f8e300dce7f4f6976bc9fa3d}\label{_m_p_u___basic_8h_ac8d8a4c2f8e300dce7f4f6976bc9fa3d}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getAccReadings@{getAccReadings}}
+\index{getAccReadings@{getAccReadings}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getAccReadings()}{getAccReadings()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Acc\+Readings (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{skip\+From\+Beginning,  }\item[{uint8\+\_\+t}]{skip\+From\+End }\end{DoxyParamCaption})}
+
+
+
+This function retrieves the raw accelerometer readings from the MPU6050. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of a signed int16\+\_\+t array that will hold the values read from the IMU. \\
+\hline
+{\em skip\+From\+Beginning} & This parameter can be used to retrieve only specific accelerometer readings and not all 3. \\
+\hline
+{\em skip\+From\+End} & This parameter can be used to retrieve only specific accelerometer readings and not all 3. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a7131f51e3e09c742e7b1c1143c83029b}\label{_m_p_u___basic_8h_a7131f51e3e09c742e7b1c1143c83029b}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getAccReadingsCalibrated@{getAccReadingsCalibrated}}
+\index{getAccReadingsCalibrated@{getAccReadingsCalibrated}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getAccReadingsCalibrated()}{getAccReadingsCalibrated()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Acc\+Readings\+Calibrated (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function will retrieve the raw accelerometer readings and appy the neccessary calibration model to them to correct them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of an array of floats that will store all 3 readings of the 3 accelerometers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a65b2e6cf4a67a3c26cb61d720abfd0f8}\label{_m_p_u___basic_8h_a65b2e6cf4a67a3c26cb61d720abfd0f8}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getAccReadingsScaled@{getAccReadingsScaled}}
+\index{getAccReadingsScaled@{getAccReadingsScaled}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getAccReadingsScaled()}{getAccReadingsScaled()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Acc\+Readings\+Scaled (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function will retrieve the raw readings, apply the calibration model to them and finally scale them into the default units of the MPU6050 which are g\textquotesingle{}s. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of an array of floats that will store all 3 readings of the 3 accelerometers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a4e012976a981b7e36f191ebb89d8bcc0}\label{_m_p_u___basic_8h_a4e012976a981b7e36f191ebb89d8bcc0}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getAccReadingsScaledSI@{getAccReadingsScaledSI}}
+\index{getAccReadingsScaledSI@{getAccReadingsScaledSI}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getAccReadingsScaledSI()}{getAccReadingsScaledSI()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Acc\+Readings\+Scaled\+SI (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function will retrieve the raw readings, apply calibration modelto them and finally scale them into SI units of acceleration which are m/s$^\wedge$2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of an array of floats that will store all 3 readings of the 3 accelerometers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a67385440be28a185683b252a4831b4e5}\label{_m_p_u___basic_8h_a67385440be28a185683b252a4831b4e5}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getGyroReadings@{getGyroReadings}}
+\index{getGyroReadings@{getGyroReadings}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getGyroReadings()}{getGyroReadings()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Gyro\+Readings (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{skip\+From\+Beginning,  }\item[{uint8\+\_\+t}]{skip\+From\+End }\end{DoxyParamCaption})}
+
+
+
+This function retrieves the raw gyroscope readings from the MPU6050. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of a signed int16\+\_\+t array that will hold the values read from the IMU. \\
+\hline
+{\em skip\+From\+Beginning} & This parameter can be used to retrieve only specific gyroscope readings and not all 3. \\
+\hline
+{\em skip\+From\+End} & This parameter can be used to retrieve only specific gyroscope readings and not all 3. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a47bf99360546e00ab0e09dae8b18855b}\label{_m_p_u___basic_8h_a47bf99360546e00ab0e09dae8b18855b}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getGyroReadingsCalibrated@{getGyroReadingsCalibrated}}
+\index{getGyroReadingsCalibrated@{getGyroReadingsCalibrated}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getGyroReadingsCalibrated()}{getGyroReadingsCalibrated()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Gyro\+Readings\+Calibrated (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function will retrieve the raw gyroscope readings then apply the gyro\textquotesingle{}s calibration model to them in order to correct them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of an array of floats that will store all 3 readings of the 3 gyroscopes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a8a0b3f887cf190696d4d4237d0b9ac07}\label{_m_p_u___basic_8h_a8a0b3f887cf190696d4d4237d0b9ac07}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getGyroReadingsScaled@{getGyroReadingsScaled}}
+\index{getGyroReadingsScaled@{getGyroReadingsScaled}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getGyroReadingsScaled()}{getGyroReadingsScaled()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Gyro\+Readings\+Scaled (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function will retrieve the raw readings, apply the calibration model to them and finally scale them into the default units of the MPU6050 which are degrees per second (DPS). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of an array of floats that will store all 3 readings of the 3 gyroscopes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_a6396dc17af009d0155c1a9b560d52b1f}\label{_m_p_u___basic_8h_a6396dc17af009d0155c1a9b560d52b1f}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getGyroReadingsScaledSI@{getGyroReadingsScaledSI}}
+\index{getGyroReadingsScaledSI@{getGyroReadingsScaledSI}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getGyroReadingsScaledSI()}{getGyroReadingsScaledSI()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Gyro\+Readings\+Scaled\+SI (\begin{DoxyParamCaption}\item[{float $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function will retrieve the raw readings, apply the calibration model to them and finally scale them into the SI units of angular rate/velocity which are radians per second (rad/s). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the start of an array of floats that will store all 3 readings of the 3 gyroscopes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_m_p_u___basic_8h_aef065a09505e32981a014dfba7d28a3d}\label{_m_p_u___basic_8h_aef065a09505e32981a014dfba7d28a3d}} 
+\index{MPU\_Basic.h@{MPU\_Basic.h}!getTempReadings@{getTempReadings}}
+\index{getTempReadings@{getTempReadings}!MPU\_Basic.h@{MPU\_Basic.h}}
+\doxysubsubsection{\texorpdfstring{getTempReadings()}{getTempReadings()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t get\+Temp\+Readings (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+This function retrieves the raw temperature sensor reading from the MPU6050. 
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to a signed int16\+\_\+t that will hold the value read from the IMU. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t Will return ESP\+\_\+\+OK upon successful completion or an error otherwise. 
+\end{DoxyReturn}

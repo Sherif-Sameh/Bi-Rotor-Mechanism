@@ -1,0 +1,90 @@
+\hypertarget{_s_p_i___slave_8h}{}\doxysection{SPI\+\_\+\+Slave.\+h File Reference}
+\label{_s_p_i___slave_8h}\index{SPI\_Slave.h@{SPI\_Slave.h}}
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_s_p_i___slave_8h_adcfa825419e614436e1b6e95e1d42d15}\label{_s_p_i___slave_8h_adcfa825419e614436e1b6e95e1d42d15}} 
+\#define {\bfseries miso}~12
+\item 
+\mbox{\Hypertarget{_s_p_i___slave_8h_adbb09c772e1b6d18e204d109caa25337}\label{_s_p_i___slave_8h_adbb09c772e1b6d18e204d109caa25337}} 
+\#define {\bfseries mosi}~11
+\item 
+\mbox{\Hypertarget{_s_p_i___slave_8h_a74d3c3c85d450f9238a162d015c0b407}\label{_s_p_i___slave_8h_a74d3c3c85d450f9238a162d015c0b407}} 
+\#define {\bfseries ss}~10
+\item 
+\mbox{\Hypertarget{_s_p_i___slave_8h_ac030f2ba0e0ce77f0b543c2bd6558c18}\label{_s_p_i___slave_8h_ac030f2ba0e0ce77f0b543c2bd6558c18}} 
+\#define {\bfseries sck}~13
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_s_p_i___slave_8h_a57d1b445f2b210c601f5e2ce859d1fb0}{spi\+Set\+Slave}} (uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initializes the SPI of the slave. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i___slave_8h_a861cbc9126316e013b8be5bb1863bab3}{spi\+Send\+Slave}} (uint8\+\_\+t sdata)
+\begin{DoxyCompactList}\small\item\em Sends a byte to the Master through SPI. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_s_p_i___slave_8h_aa32f4e19069f401e57fedf077cad4e0e}{spi\+Receive\+Slave}} ()
+\begin{DoxyCompactList}\small\item\em receives a byte from the Master thorugh SPI \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ziad Alwareh 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/01-\/02
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_s_p_i___slave_8h_a57d1b445f2b210c601f5e2ce859d1fb0}\label{_s_p_i___slave_8h_a57d1b445f2b210c601f5e2ce859d1fb0}} 
+\index{SPI\_Slave.h@{SPI\_Slave.h}!spiSetSlave@{spiSetSlave}}
+\index{spiSetSlave@{spiSetSlave}!SPI\_Slave.h@{SPI\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{spiSetSlave()}{spiSetSlave()}}
+{\footnotesize\ttfamily void spi\+Set\+Slave (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Initializes the SPI of the slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & the mode of the SPI transaction. 0-\/-\/\texorpdfstring{$>$}{>}mode0 1-\/-\/\texorpdfstring{$>$}{>}mode1 2-\/-\/\texorpdfstring{$>$}{>}mode2 3-\/-\/\texorpdfstring{$>$}{>}mode3 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_s_p_i___slave_8h_a861cbc9126316e013b8be5bb1863bab3}\label{_s_p_i___slave_8h_a861cbc9126316e013b8be5bb1863bab3}} 
+\index{SPI\_Slave.h@{SPI\_Slave.h}!spiSendSlave@{spiSendSlave}}
+\index{spiSendSlave@{spiSendSlave}!SPI\_Slave.h@{SPI\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{spiSendSlave()}{spiSendSlave()}}
+{\footnotesize\ttfamily void spi\+Send\+Slave (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sdata }\end{DoxyParamCaption})}
+
+
+
+Sends a byte to the Master through SPI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sdata} & The data we want to send to the master over SPI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_s_p_i___slave_8h_aa32f4e19069f401e57fedf077cad4e0e}\label{_s_p_i___slave_8h_aa32f4e19069f401e57fedf077cad4e0e}} 
+\index{SPI\_Slave.h@{SPI\_Slave.h}!spiReceiveSlave@{spiReceiveSlave}}
+\index{spiReceiveSlave@{spiReceiveSlave}!SPI\_Slave.h@{SPI\_Slave.h}}
+\doxysubsubsection{\texorpdfstring{spiReceiveSlave()}{spiReceiveSlave()}}
+{\footnotesize\ttfamily uint8\+\_\+t spi\+Receive\+Slave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+receives a byte from the Master thorugh SPI 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t the byte of data we received. 
+\end{DoxyReturn}
